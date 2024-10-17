@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es'; // Para mostrar el calendario en español
 import './DashboardDoctor.css';
+import ExpedienteForm from './ExpedienteForm'; // Importa el formulario de expedientes
 
 registerLocale('es', es); // Registrar el idioma español para el calendario
 
@@ -38,18 +39,20 @@ const DashboardDoctor = () => {
         </nav>
       </header>
 
-      {/* Mostrar el calendario al inicio con las citas marcadas */}
-      <div className="calendar-container">
-        <h3>Calendario de Consultas</h3>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          inline
-          locale="es"
-          highlightDates={highlightWithRanges}
-          className="ios-calendar"
-        />
-      </div>
+      {activeTab !== 'expedientes' && (
+  <div className="calendar-container">
+    <h3>Calendario de Consultas</h3>
+    <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      inline
+      locale="es"
+      highlightDates={highlightWithRanges}
+      className="ios-calendar"
+    />
+  </div>
+)}
+
 
       {activeTab === 'consultas' && (
         <div id="consultas" className="tab-content-doctor">
@@ -60,16 +63,20 @@ const DashboardDoctor = () => {
         </div>
       )}
 
-      {activeTab === 'expedientes' && (
-        <div id="expedientes-doctor" className="tab-content-doctor">
-          <h3>Expedientes Médicos</h3>
-          <div className="expedientes-list">
-            <p>No hay expedientes médicos registrados.</p>
-          </div>
-        </div>
-      )}
+{activeTab === 'expedientes' ? (
+  <div id="expedientes-doctor" className="tab-content-doctor">
+    <h3>Historia clínica de fisioterapia</h3> {/* Solo cambiar aquí */}
+    <ExpedienteForm /> {/* Muestra el formulario de expedientes */}
+  </div>
+) : (
+  <div id="expedientes-doctor" className="tab-content-doctor">
+    <h3>Expedientes Médicos</h3> {/* Mantener el título original en otras pestañas */}
+  </div>
+)}
+
     </div>
   );
 };
 
 export default DashboardDoctor;
+
