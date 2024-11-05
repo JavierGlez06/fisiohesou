@@ -1,83 +1,154 @@
+/* Definir variables para los colores */
+:root {
+  --color-primary: #6a0dad; /* Color morado */
+  --color-secondary: #007aff; /* Color azul */
+  --color-background: #f2f2f7; /* Color de fondo */
+  --color-header: #1c1c1e; /* Color de texto principal */
+  --color-day-hover: #eaeaea; /* Color de hover de día */
+  --color-day-selected: #6a0dad; /* Día seleccionado */
+  --color-day-today: #007aff; /* Día de hoy */
+  --shadow: rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
 /* Estilos generales del contenedor */
 .dashboard-container {
-    padding: 20px;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px var(--shadow);
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.logo-header {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.calendar-container {
+  background-color: var(--color-background);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--color-header);
+}
+
+/* Estilo personalizado para el calendario estilo iOS */
+.ios-calendar {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.react-datepicker {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.react-datepicker__header {
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  border-radius: 12px 12px 0 0;
+  padding: 10px;
+}
+
+.react-datepicker__current-month {
+  font-weight: 600;
+  color: var(--color-header);
+  margin-bottom: 10px;
+}
+
+.react-datepicker__day-name, .react-datepicker__day {
+  width: 2.5rem;
+  line-height: 2.5rem;
+  color: var(--color-header);
+  font-weight: normal;
+  transition: background-color 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--color-day-hover);
+  border-radius: 50%;
+}
+
+.react-datepicker__day--highlighted {
+  background-color: var(--color-primary); /* Color morado para días con citas */
+  color: white;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--today {
+  font-weight: bold;
+  color: var(--color-day-today); /* Color azul para el día de hoy */
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-primary); /* Color morado al seleccionar con teclado */
+  color: white;
+}
+
+/* Estilos del formulario */
+.form-container {
+  max-width: 100%;
+  width: 90%; /* Ajusta esto según necesites */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--shadow);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .form-container {
+    width: 100%; /* Ocupa todo el ancho disponible en pantallas pequeñas */
+    padding: 15px;
   }
-  
+
+  .dashboard-container {
+    padding: 15px; /* Ajuste de padding para pantallas pequeñas */
+  }
+
   .logo-header {
-    width: 150px;
-    margin-bottom: 20px;
+    width: 120px; /* Ajuste de tamaño de logo */
   }
-  
-  .calendar-container {
-    background-color: #f2f2f7;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-  }
-  
+
   h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #1c1c1e;
+    font-size: 16px; /* Ajuste de tamaño de encabezado */
   }
-  
-  /* Estilo personalizado para el calendario estilo iOS */
-  .ios-calendar {
-    width: 100%;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px; /* Ajuste de padding para teléfonos pequeños */
   }
-  
-  .react-datepicker {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  .logo-header {
+    width: 100px; /* Ajuste de tamaño de logo en teléfonos */
   }
-  
-  .react-datepicker__header {
-    background-color: white;
-    border-bottom: 1px solid #eaeaea;
-    border-radius: 12px 12px 0 0;
-    padding: 10px;
+
+  h3 {
+    font-size: 14px; /* Reducción de tamaño de fuente */
   }
-  
-  .react-datepicker__current-month {
-    font-weight: 600;
-    color: #1c1c1e;
-    margin-bottom: 10px;
-  }
-  
+
   .react-datepicker__day-name, .react-datepicker__day {
-    width: 2.5rem;
-    line-height: 2.5rem;
-    color: #1c1c1e;
-    font-weight: normal;
-    transition: background-color 0.2s ease;
+    width: 2rem; /* Reducción de tamaño de los días del calendario */
+    line-height: 2rem;
   }
-  
-  .react-datepicker__day:hover {
-    background-color: #eaeaea;
-    border-radius: 50%;
+
+  .react-datepicker__current-month {
+    font-size: 16px; /* Ajuste de tamaño de texto para mes */
   }
-  
-  .react-datepicker__day--highlighted {
-    background-color: #6a0dad; /* Color morado para días con citas */
-    color: white;
-    border-radius: 50%;
-  }
-  
-  .react-datepicker__day--today {
-    font-weight: bold;
-    color: #007aff; /* Color azul para el día de hoy */
-  }
-  
-  .react-datepicker__day--keyboard-selected {
-    background-color: #6a0dad; /* Color morado al seleccionar con teclado */
-  }
-  
+}
+
+/* Asegurarse de que los botones sean accesibles */
+.tab-button:focus {
+  outline: 3px solid var(--color-primary); /* Borde visible cuando el botón está enfocado */
+}

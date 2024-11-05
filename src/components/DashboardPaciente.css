@@ -10,6 +10,9 @@
   font-size: 0.9rem; /* Tamaño de fuente adaptable */
   overflow-y: auto; /* Permitir scroll vertical */
   height: 100vh; /* Ocupa todo el alto de la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 body, html {
@@ -155,39 +158,3 @@ h3 {
     font-size: 0.8rem;
   }
 }
-
-/* Para pantallas pequeñas con una resolución de 544x254 */
-@media (max-width: 544px) and (max-height: 254px) {
-  .dashboard-container {
-    padding: 5px;
-    font-size: 0.75rem;
-  }
-
-  .logo-header {
-    width: 60px;
-  }
-
-  h3 {
-    font-size: 0.85rem;
-  }
-
-  .input-field {
-    padding: 6px;
-    font-size: 0.75rem;
-  }
-
-  .save-btn {
-    font-size: 0.75rem;
-    padding: 6px;
-  }
-
-  .cita-confirmada h4 {
-    font-size: 0.85rem;
-  }
-
-  .cita-confirmada p {
-    font-size: 0.75rem;
-  }
-}
-
-

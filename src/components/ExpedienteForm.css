@@ -1,16 +1,15 @@
 /* ExpedienteForm.css */
 .form-container {
-    /*width: 100vw;*/
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Ajustado a flex-start para permitir el scroll */
-    overflow-y: auto; /* Permite el scroll vertical si es necesario */
-    padding: 20px; /* Espacio alrededor del formulario */
-  }
-  
-  .form {
-    width: 100%;
-    max-width: 600px;
-  }
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Ajustado a flex-start para permitir el scroll */
+  overflow-y: auto; /* Permite el scroll vertical si es necesario */
+  padding: 20px; /* Espacio alrededor del formulario */
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+}
   

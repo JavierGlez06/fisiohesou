@@ -5,6 +5,7 @@ import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es'; // Para mostrar el calendario en español
 import './DashboardDoctor.css';
 import ExpedienteForm from './ExpedienteForm'; // Importa el formulario de expedientes
+import FormularioFisioterapia from './FormularioFisioterapia'; // Importa el nuevo formulario
 
 registerLocale('es', es); // Registrar el idioma español para el calendario
 
@@ -20,9 +21,9 @@ const DashboardDoctor = () => {
   ];
 
   // Función para resaltar días con citas programadas
-  const highlightWithRanges = {
-    'react-datepicker__day--highlighted': citasProgramadas,
-  };
+  const highlightDates = citasProgramadas.map(date => ({
+    'react-datepicker__day--highlighted': date
+  }));
 
   const openTab = (tabName) => {
     setActiveTab(tabName);
@@ -36,24 +37,26 @@ const DashboardDoctor = () => {
         <nav>
           <button className="tab-button" onClick={() => openTab('consultas')}>Consultas</button>
           <button className="tab-button" onClick={() => openTab('expedientes')}>Expedientes Médicos</button>
+          <button className="tab-button" onClick={() => openTab('forms')}>Forms</button> {/* Nuevo botón para forms */}
         </nav>
       </header>
 
-      {activeTab !== 'expedientes' && (
-  <div className="calendar-container">
-    <h3>Calendario de Consultas</h3>
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      inline
-      locale="es"
-      highlightDates={highlightWithRanges}
-      className="ios-calendar"
-    />
-  </div>
-)}
+      {/* Mostrar calendario si no está en las pestañas 'expedientes' o 'forms' */}
+      {activeTab !== 'expedientes' && activeTab !== 'forms' && (
+        <div className="calendar-container">
+          <h3>Calendario de Consultas</h3>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            inline
+            locale="es"
+            highlightDates={highlightDates}  // Asegurarse de que highlightDates sea una lista de objetos
+            className="ios-calendar"
+          />
+        </div>
+      )}
 
-
+      {/* Pestaña de Consultas Programadas */}
       {activeTab === 'consultas' && (
         <div id="consultas" className="tab-content-doctor">
           <h3>Consultas Programadas</h3>
@@ -63,20 +66,24 @@ const DashboardDoctor = () => {
         </div>
       )}
 
-{activeTab === 'expedientes' ? (
-  <div id="expedientes-doctor" className="tab-content-doctor">
-    <h3>Historia clínica de fisioterapia</h3> {/* Solo cambiar aquí */}
-    <ExpedienteForm /> {/* Muestra el formulario de expedientes */}
-  </div>
-) : (
-  <div id="expedientes-doctor" className="tab-content-doctor">
-    <h3>Expedientes Médicos</h3> {/* Mantener el título original en otras pestañas */}
-  </div>
-)}
-
+      {/* Pestaña de Expedientes Médicos */}
+      {activeTab === 'expedientes' ? (
+        <div id="expedientes-doctor" className="tab-content-doctor">
+          <h3>Historia clínica de fisioterapia</h3> 
+          <ExpedienteForm /> {/* Muestra el formulario de expedientes */}
+        </div>
+      ) : activeTab === 'forms' ? (
+        <div id="forms-doctor" className="tab-content-doctor">
+          <h3>Formulario de Fisioterapia</h3>
+          <FormularioFisioterapia /> {/* Muestra el nuevo formulario */}
+        </div>
+      ) : (
+        <div id="expedientes-doctor" className="tab-content-doctor">
+          <h3>Expedientes Médicos</h3>
+        </div>
+      )}
     </div>
   );
 };
 
 export default DashboardDoctor;
-

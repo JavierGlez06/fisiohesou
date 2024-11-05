@@ -58,8 +58,20 @@ const DashboardPaciente = () => {
         <img src="logo.png" alt="Logo" className="logo-header" />
         <h2>Bienvenido Paciente</h2>
         <nav>
-          <button className="tab-button" onClick={() => openTab('calendario')}>Calendario</button>
-          <button className="tab-button" onClick={() => openTab('expedientes')}>Expedientes</button>
+          <button
+            aria-label="Calendario"
+            className="tab-button"
+            onClick={() => openTab('calendario')}
+          >
+            Calendario
+          </button>
+          <button
+            aria-label="Expedientes"
+            className="tab-button"
+            onClick={() => openTab('expedientes')}
+          >
+            Expedientes
+          </button>
         </nav>
       </header>
 

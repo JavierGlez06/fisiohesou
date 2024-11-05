@@ -54,7 +54,7 @@ const ExpedienteForm = () => {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <TextField
           label="Expediente"
           name="Expediente"
@@ -66,7 +66,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Fecha"
           name="Fecha"
-          type="number"
+          type="date"
           value={formData.Fecha}
           onChange={handleChange}
           fullWidth
@@ -75,7 +75,6 @@ const ExpedienteForm = () => {
         <TextField
           label="Fisioterapeuta"
           name="Fisioterapeuta"
-          multiline
           value={formData.Fisioterapeuta}
           onChange={handleChange}
           fullWidth
@@ -83,18 +82,17 @@ const ExpedienteForm = () => {
         />
         <TextField
           label="Nombre"
-          name="Nommbre"
-          multiline
-          value={formData.tratamiento}
+          name="Nombre"
+          value={formData.Nombre}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Fecha de nacimiento"
-          name="Fecha de nacimiento"
-          multiline
-          value={formData.tratamiento}
+          name="fechaDeNacimiento"
+          type="date"
+          value={formData.fechaDeNacimiento}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -102,8 +100,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Edad"
           name="Edad"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Edad}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -111,8 +108,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Sexo"
           name="Sexo"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Sexo}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -120,8 +116,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Talla"
           name="Talla"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Talla}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -129,8 +124,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Peso"
           name="Peso"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Peso}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -138,35 +132,31 @@ const ExpedienteForm = () => {
         <TextField
           label="IMC"
           name="IMC"
-          multiline
-          value={formData.tratamiento}
+          value={formData.IMC}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Ocupacion"
+          label="Ocupación"
           name="Ocupacion"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Ocupacion}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Estado civil"
-          name="Estado civil"
-          multiline
-          value={formData.tratamiento}
+          name="estadoCivil"
+          value={formData.estadoCivil}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Lugar de nacimiento"
-          name="Lugar de nacimiento"
-          multiline
-          value={formData.tratamiento}
+          name="LugarDeNacimiento"
+          value={formData.LugarDeNacimiento}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -174,17 +164,15 @@ const ExpedienteForm = () => {
         <TextField
           label="Nacionalidad"
           name="Nacionalidad"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Nacionalidad}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Domicilio actual"
-          name="Domicilio actual"
-          multiline
-          value={formData.tratamiento}
+          name="Domicilio"
+          value={formData.Domicilio}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -192,8 +180,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Colonia"
           name="Colonia"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Colonia}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -201,17 +188,15 @@ const ExpedienteForm = () => {
         <TextField
           label="Localidad"
           name="Localidad"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Localidad}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="CP"
+          label="C.P."
           name="CP"
-          multiline
-          value={formData.tratamiento}
+          value={formData.CP}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -219,8 +204,7 @@ const ExpedienteForm = () => {
         <TextField
           label="Municipio"
           name="Municipio"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Municipio}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -228,17 +212,15 @@ const ExpedienteForm = () => {
         <TextField
           label="Estado"
           name="Estado"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Estado}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Telefono en casa"
-          name="Telefono en casa"
-          multiline
-          value={formData.tratamiento}
+          label="Teléfono en casa"
+          name="telefonoCasa"
+          value={formData.telefonoCasa}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -246,26 +228,23 @@ const ExpedienteForm = () => {
         <TextField
           label="Celular"
           name="Celular"
-          multiline
-          value={formData.tratamiento}
+          value={formData.Celular}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Contacto de emergencis"
-          name="Contacto de emergencia"
-          multiline
-          value={formData.tratamiento}
+          label="Contacto de emergencia"
+          name="contactoEmergencia"
+          value={formData.contactoEmergencia}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Celular de emergencia"
-          name="Celular de emergencia"
-          multiline
-          value={formData.tratamiento}
+          name="celularEmergencia"
+          value={formData.celularEmergencia}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -279,4 +258,3 @@ const ExpedienteForm = () => {
 };
 
 export default ExpedienteForm;
-

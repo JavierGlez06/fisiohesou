@@ -2,26 +2,22 @@ import { useState } from 'react';
 import Login from './components/Login';
 import DashboardPaciente from './components/DashboardPaciente';
 import DashboardDoctor from './components/DashboardDoctor';
-import DashboardExpediente from './components/DashboardDoctor';
+import FormularioFisioterapia from './components/FormularioFisioterapia'; // Asegúrate de que esta ruta sea correcta
 import './App.css';
 
 function App() {
   const [role, setRole] = useState('login'); // 'login', 'paciente', 'doctor'
 
   const handleLogin = (isPaciente) => {
-    if (isPaciente) {
-      setRole('paciente');
-    } else {
-      setRole('doctor');
-    }
+    setRole(isPaciente ? 'paciente' : 'doctor');
   };
 
   return (
-    <div>
+    <div className="app-container">
       {role === 'login' && <Login onLogin={handleLogin} />}
       {role === 'paciente' && <DashboardPaciente />}
       {role === 'doctor' && <DashboardDoctor />}
-      {role === 'expediente' && <ExpedienteForm />}  {/* Muestra el formulario si es expediente */}
+      {role === 'expediente' && <FormularioFisioterapia />}  {/* Muestra el formulario si es expediente */}
     </div>
   );
 }
