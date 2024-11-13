@@ -47,7 +47,7 @@ const FormularioHistoriaClinica = () => {
           <tr>
             <td data-label="Localidad:">Localidad:</td>
             <td><input type="text" className="input-cell" /></td>
-            <td data-label="C.P.:">C.P.:</td>
+            <td data-label="C.P.:" >C.P.:</td>
             <td><input type="text" className="input-cell" /></td>
             <td data-label="Municipio:">Municipio:</td>
             <td><input type="text" className="input-cell" /></td>
@@ -70,6 +70,21 @@ const FormularioHistoriaClinica = () => {
             <td data-label="Celular:">Celular:</td>
             <td><input type="text" className="input-cell" /></td>
           </tr>
+          
+          {/* Nuevos campos agregados */}
+          <tr>
+            <td data-label="Motivo de consulta:">Motivo de consulta:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+          </tr>
+          <tr>
+            <td data-label="Padecimiento actual:">Padecimiento actual:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+          </tr>
+          <tr>
+            <td data-label="Tratamiento previo o farmacológico:">Tratamiento previo o farmacológico:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+          </tr>
+
         </tbody>
       </table>
     </div>
