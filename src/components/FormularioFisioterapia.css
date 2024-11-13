@@ -141,3 +141,36 @@ input:focus {
     height: auto; /* Permitir que el tamaño se ajuste dependiendo del contenido */
   }
 }
+
+/* Estilo para el título de antecedentes heredofamiliares y personales patológicos */
+.titulo-antecedentes {
+  background-color: #f0f0f0; /* Color de fondo suave */
+  border: 1px solid #ccc;    /* Borde alrededor */
+  text-align: center;
+  padding: 10px;
+}
+
+/* Estilo para el título de personales no patológicos */
+.titulo-personales {
+  background-color: #e0e7ff; /* Color de fondo diferente */
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Estilo para las preguntas de antecedentes en las dos primeras columnas */
+.pregunta-antecedentes {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.input-cell {
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.input-cell[type="text"] {
+  width: 100%;  /* Asegura que ocupe todo el ancho disponible */
+  max-width: 100%; /* Evita que se estire más allá del límite */
+}

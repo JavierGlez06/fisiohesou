@@ -2,6 +2,27 @@ import React from 'react';
 import './FormularioFisioterapia.css';
 
 const FormularioHistoriaClinica = () => {
+  // Array de 17 preguntas
+  const preguntas = [
+    "Diabetes",
+    "Enfermedades reumáticas",
+    "Tabaco",
+    "HA",
+    "Accidentes",
+    "Alcohol",
+    "Cáncer",
+    "Fracturas",
+    "Drogas",
+    "Alergias",
+    "Quirúrgicos",
+    "Sueño",
+    "Otros",
+    "Cardiovasculares",
+    "Actividad fisica",
+    "",
+    "Psiquiatricos", 
+    "Pasatiempo"
+  ];
   return (
     <div className="form-container">
       <table>
@@ -72,24 +93,6 @@ const FormularioHistoriaClinica = () => {
             <td><input type="text" className="input-cell" /></td>
           </tr>
 
-          {/* Sección de Motivo de Consulta */}
-          <tr>
-            <td data-label="Motivo de consulta:">Motivo de consulta:</td>
-            <td colSpan="5"><textarea className="input-cell" rows="4" placeholder="Describa el motivo de la consulta..."></textarea></td>
-          </tr>
-
-          {/* Sección de Padecimiento Actual */}
-          <tr>
-            <td data-label="Padecimiento actual:">Padecimiento actual:</td>
-            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
-          </tr>
-
-          {/* Sección de Tratamiento Previo */}
-          <tr>
-            <td data-label="Tratamiento previo o farmacológico:">Tratamiento previo o farmacológico:</td>
-            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
-          </tr>
-
           {/* Sección de Signos Vitales */}
           <tr>
             <td colSpan="6">
@@ -118,6 +121,68 @@ const FormularioHistoriaClinica = () => {
               </div>
             </td>
           </tr>
+
+          {/* Sección de Motivo de Consulta */}
+          <tr>
+            <td data-label="Motivo de consulta:">Motivo de consulta:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4" ></textarea></td>
+          </tr>
+
+          {/* Sección de Padecimiento Actual */}
+          <tr>
+            <td data-label="Padecimiento actual:">Padecimiento actual:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+          </tr>
+
+          {/* Sección de Tratamiento Previo */}
+          <tr>
+            <td data-label="Tratamiento previo o farmacológico:">Tratamiento previo o farmacológico:</td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+          </tr>
+
+          {/* Nueva sección de preguntas de Sí o No en una tabla de 6x3 */}
+          <tr>
+            <td colSpan="6">
+              <div className="seccion-preguntas">
+                <table>
+                  <thead>
+                    <tr>
+                      <th className="titulo-antecedentes" colSpan="6">Antecedentes heredofamiliares y personales patológicos</th>
+                      <th className="titulo-personales">Personales no patológicos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: Math.ceil(preguntas.length / 3) }).map((_, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {preguntas.slice(rowIndex * 3, rowIndex * 3 + 3).map((pregunta, colIndex) => (
+                          <React.Fragment key={colIndex}>
+                            <td className="pregunta-antecedentes" colSpan="2">{pregunta}</td>
+                            <td>
+                            {pregunta === "" ? (
+                              null
+                            ) : pregunta === "Otros" ? (
+                                <input type="text" 
+                                className="input-cell" 
+                                placeholder="Especificar"
+                                style={{ width: "100%" }}
+                                />
+                              ) : (
+                                <select className="input-cell">
+                                  <option value="sí">Sí</option>
+                                  <option value="no">No</option>
+                                </select>
+                              )}
+                            </td>
+                          </React.Fragment>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+
         </tbody>
       </table>
     </div>
