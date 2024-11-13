@@ -6,6 +6,7 @@ const FormularioHistoriaClinica = () => {
     <div className="form-container">
       <table>
         <tbody>
+          {/* Sección de Información Personal */}
           <tr>
             <td data-label="Nombre:">Nombre:</td>
             <td colSpan="5"><input type="text" className="input-cell" /></td>
@@ -70,21 +71,53 @@ const FormularioHistoriaClinica = () => {
             <td data-label="Celular:">Celular:</td>
             <td><input type="text" className="input-cell" /></td>
           </tr>
-          
-          {/* Nuevos campos agregados */}
+
+          {/* Sección de Motivo de Consulta */}
           <tr>
             <td data-label="Motivo de consulta:">Motivo de consulta:</td>
-            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
+            <td colSpan="5"><textarea className="input-cell" rows="4" placeholder="Describa el motivo de la consulta..."></textarea></td>
           </tr>
+
+          {/* Sección de Padecimiento Actual */}
           <tr>
             <td data-label="Padecimiento actual:">Padecimiento actual:</td>
             <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
           </tr>
+
+          {/* Sección de Tratamiento Previo */}
           <tr>
             <td data-label="Tratamiento previo o farmacológico:">Tratamiento previo o farmacológico:</td>
             <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
           </tr>
 
+          {/* Sección de Signos Vitales */}
+          <tr>
+            <td colSpan="6">
+              <div className="seccion-signos-vitales">
+                <h3>Signos Vitales</h3>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td data-label="Frecuencia Cardíaca">Frecuencia Cardíaca</td>
+                      <td><input type="text" className="input-cell" /></td>
+                      <td data-label="Sp02:">Sp02</td>
+                      <td><input type="text" className="input-cell" /></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Temperatura">Temperatura</td>
+                      <td><input type="text" className="input-cell" /></td>
+                      <td data-label="Presión arterial">Presión arterial</td>
+                      <td><input type="text" className="input-cell" /></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Frecuencia respiratoria">Frecuencia respiratoria</td>
+                      <td><input type="text" className="input-cell" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
