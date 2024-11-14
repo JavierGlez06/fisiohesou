@@ -1,8 +1,5 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './FormularioFisioterapia.css';
-//import imagenCuerpo from './src/assets/';
-
-
 
 const FormularioHistoriaClinica = () => {
   // Array de 17 preguntas
@@ -27,16 +24,16 @@ const FormularioHistoriaClinica = () => {
     "Pasatiempo"
   ];
 
-    // Estado para áreas seleccionadas en el cuerpo
-    const [selectedAreas, setSelectedAreas] = useState([]);
+  // Estado para áreas seleccionadas en el cuerpo
+  const [selectedAreas, setSelectedAreas] = useState([]);
 
-    const handleAreaClick = (area) => {
-      if (selectedAreas.includes(area)) {
-        setSelectedAreas(selectedAreas.filter(a => a !== area)); // Quitar la "X" si ya estaba seleccionada
-      } else {
-        setSelectedAreas([...selectedAreas, area]); // Marcar la "X" en el área seleccionada
-      }
-    };
+  const handleAreaClick = (area) => {
+    if (selectedAreas.includes(area)) {
+      setSelectedAreas(selectedAreas.filter(a => a !== area)); // Quitar la "X" si ya estaba seleccionada
+    } else {
+      setSelectedAreas([...selectedAreas, area]); // Marcar la "X" en el área seleccionada
+    }
+  };
 
   return (
     <div className="form-container">
@@ -173,13 +170,13 @@ const FormularioHistoriaClinica = () => {
                           <React.Fragment key={colIndex}>
                             <td className="pregunta-antecedentes" colSpan="2">{pregunta}</td>
                             <td>
-                            {pregunta === "" ? (
-                              null
-                            ) : pregunta === "Otros" ? (
+                              {pregunta === "" ? (
+                                null
+                              ) : pregunta === "Otros" ? (
                                 <input type="text" 
-                                className="input-cell" 
-                                placeholder="Especificar"
-                                style={{ width: "100%" }}
+                                  className="input-cell" 
+                                  placeholder="Especificar"
+                                  style={{ width: "100%" }}
                                 />
                               ) : (
                                 <select className="input-cell">
@@ -197,14 +194,16 @@ const FormularioHistoriaClinica = () => {
               </div>
             </td>
           </tr>
-          
+
           {/* Sección de Selección de Cuerpo Humano */}
           <tr>
             <td colSpan="6">
               <div className="seccion-cuerpo">
                 <h3>Seleccione una parte del cuerpo</h3>
                 <div className="figura">
-                  <div className="imagen-cuerpo" style={{backgroundImage: 'url(${imagenCuerpo)}' }}>
+                  {/* Agregar imagen como fondo */}
+                  <div className="imagen-cuerpo">
+                    <img src="/figura.png" alt="Cuerpo humano" className="imagen-cuerpo-logo" />
                     <div
                       className={`area cabeza ${selectedAreas.includes("cabeza") ? "marcar" : ""}`}
                       onClick={() => handleAreaClick("cabeza")}
@@ -219,7 +218,6 @@ const FormularioHistoriaClinica = () => {
                     >
                       {selectedAreas.includes("torso") && <span className="x-mark">X</span>}
                     </div>
-                    {/* Agregar más áreas si es necesario */}
                   </div>
                 </div>
               </div>
