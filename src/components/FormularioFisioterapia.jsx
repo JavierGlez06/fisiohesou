@@ -1,5 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './FormularioFisioterapia.css';
+//import imagenCuerpo from './src/assets/';
+
+
 
 const FormularioHistoriaClinica = () => {
   // Array de 17 preguntas
@@ -23,6 +26,18 @@ const FormularioHistoriaClinica = () => {
     "Psiquiatricos", 
     "Pasatiempo"
   ];
+
+    // Estado para áreas seleccionadas en el cuerpo
+    const [selectedAreas, setSelectedAreas] = useState([]);
+
+    const handleAreaClick = (area) => {
+      if (selectedAreas.includes(area)) {
+        setSelectedAreas(selectedAreas.filter(a => a !== area)); // Quitar la "X" si ya estaba seleccionada
+      } else {
+        setSelectedAreas([...selectedAreas, area]); // Marcar la "X" en el área seleccionada
+      }
+    };
+
   return (
     <div className="form-container">
       <table>
@@ -179,6 +194,34 @@ const FormularioHistoriaClinica = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </td>
+          </tr>
+          
+          {/* Sección de Selección de Cuerpo Humano */}
+          <tr>
+            <td colSpan="6">
+              <div className="seccion-cuerpo">
+                <h3>Seleccione una parte del cuerpo</h3>
+                <div className="figura">
+                  <div className="imagen-cuerpo" style={{backgroundImage: 'url(${imagenCuerpo)}' }}>
+                    <div
+                      className={`area cabeza ${selectedAreas.includes("cabeza") ? "marcar" : ""}`}
+                      onClick={() => handleAreaClick("cabeza")}
+                      style={{ top: '20px', left: '45px', width: '40px', height: '40px' }}
+                    >
+                      {selectedAreas.includes("cabeza") && <span className="x-mark">X</span>}
+                    </div>
+                    <div
+                      className={`area torso ${selectedAreas.includes("torso") ? "marcar" : ""}`}
+                      onClick={() => handleAreaClick("torso")}
+                      style={{ top: '70px', left: '40px', width: '60px', height: '80px' }}
+                    >
+                      {selectedAreas.includes("torso") && <span className="x-mark">X</span>}
+                    </div>
+                    {/* Agregar más áreas si es necesario */}
+                  </div>
+                </div>
               </div>
             </td>
           </tr>
