@@ -1,0 +1,201 @@
+/* VistaExp - Estilos completos */
+
+/* Variables de color */
+:root {
+    --color-primary: #6a0dad; /* Color morado */
+    --color-secondary: #007aff; /* Color azul */
+    --color-background: #f2f2f7; /* Color de fondo */
+    --color-header: #1c1c1e; /* Color de texto principal */
+    --color-day-hover: #eaeaea; /* Color de hover de día */
+    --color-day-selected: #6a0dad; /* Día seleccionado */
+    --color-day-today: #007aff; /* Día de hoy */
+    --shadow: rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  /* VistaExp - Contenedor principal */
+  .vista-exp-container {
+    padding: 20px;
+    background-color: var(--color-background); /* Fondo gris claro */
+    border-radius: 16px;
+    box-shadow: 0 4px 10px var(--shadow);
+    max-width: 1000px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  /* Título principal */
+  .vista-exp-container h3 {
+    font-size: 24px;
+    color: var(--color-header); /* Texto oscuro */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  /* Barra de búsqueda estilo Apple */
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Estilos para el campo de búsqueda */
+  .search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 40px; /* Espacio extra a la izquierda para el ícono */
+    border-radius: 30px; /* Bordes redondeados */
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Color del texto oscuro */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    outline: none;
+  }
+  
+  /* Cuando el campo de búsqueda está enfocado */
+  .search-input:focus {
+    border-color: var(--color-primary); /* Morado al enfocar */
+    box-shadow: 0 4px 12px rgba(106, 13, 173, 0.2); /* Sombra morada al enfocar */
+  }
+  
+  /* Placeholder en la barra de búsqueda */
+  .search-input::placeholder {
+    color: #b0b0b0; /* Gris para el texto del placeholder */
+    font-weight: 300;
+  }
+  
+  /* Estilo para el ícono de lupa */
+  .search-btn {
+    position: absolute;
+    left: 12px;
+    background: transparent;
+    border: none;
+    color: #b0b0b0;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* Cambiar color del ícono de lupa al pasar el mouse */
+  .search-btn:hover {
+    color: var(--color-primary); /* Color morado */
+  }
+  
+  /* Tabla de pacientes */
+  .tabla-pacientes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tabla-pacientes th, .tabla-pacientes td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .tabla-pacientes th {
+    background-color: var(--color-background);
+    font-weight: bold;
+    color: var(--color-header); /* Color de texto para los encabezados */
+  }
+  
+  .tabla-pacientes tr {
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  /* Fila de tabla cuando el cursor pasa sobre ella */
+  .tabla-pacientes tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo para las celdas de la tabla */
+  .tabla-pacientes td {
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  /* Mensaje cuando no hay resultados */
+  .tabla-pacientes p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para el icono de la lupa */
+  .search-btn {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #b0b0b0;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* Media Queries para hacer la interfaz responsiva */
+  
+  /* Para pantallas medianas (tablets, pantallas menores a 768px) */
+  @media (max-width: 768px) {
+    .vista-exp-container {
+      padding: 15px;
+    }
+  
+    .search-input {
+      padding: 12px 30px; /* Ajustar padding */
+      font-size: 0.95rem;
+    }
+  
+    .tabla-pacientes {
+      font-size: 0.9rem; /* Reducir tamaño de fuente */
+    }
+  
+    .tabla-pacientes th, .tabla-pacientes td {
+      padding: 10px; /* Reducir el padding de las celdas */
+    }
+  
+    .search-btn {
+      left: 10px; /* Ajustar la posición del ícono en pantallas más pequeñas */
+    }
+  }
+  
+  /* Para pantallas pequeñas (teléfonos móviles menores a 480px) */
+  @media (max-width: 480px) {
+    .vista-exp-container {
+      padding: 10px; /* Ajuste de padding para teléfonos pequeños */
+    }
+  
+    .search-input {
+      padding: 12px 25px; /* Ajustar padding */
+      font-size: 0.9rem; /* Reducir tamaño de la fuente */
+    }
+  
+    .tabla-pacientes {
+      font-size: 0.85rem; /* Reducir tamaño de fuente */
+    }
+  
+    .tabla-pacientes th, .tabla-pacientes td {
+      padding: 8px; /* Reducir el padding de las celdas */
+    }
+  
+    .search-btn {
+      left: 8px; /* Ajustar la posición del ícono */
+    }
+  }
+  
+  /* Asegurarse de que los botones sean accesibles */
+  .tab-button:focus {
+    outline: 3px solid var(--color-primary); /* Borde visible cuando el botón está enfocado */
+  }
+  
