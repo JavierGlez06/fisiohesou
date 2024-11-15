@@ -137,7 +137,7 @@ const FormularioHistoriaClinica = () => {
           {/* Sección de Motivo de Consulta */}
           <tr>
             <td data-label="Motivo de consulta:">Motivo de consulta:</td>
-            <td colSpan="5"><textarea className="input-cell" rows="4" ></textarea></td>
+            <td colSpan="5"><textarea className="input-cell" rows="4"></textarea></td>
           </tr>
 
           {/* Sección de Padecimiento Actual */}
@@ -222,6 +222,18 @@ const FormularioHistoriaClinica = () => {
                 </div>
               </div>
             </td>
+          </tr>
+
+          {/* Nota de evolución */}
+          <tr>
+            <td data-label="Nota de evolución:">Nota de evolución:</td>
+            <td colSpan="5"><textarea id="nota-evolucion" className="input-cell" rows="4"></textarea></td>
+          </tr>
+
+          {/* Nota de referencia */}
+          <tr>
+            <td data-label="Nota de referencia:">Nota de referencia:</td>
+            <td colSpan="5"><textarea id="nota-referencia" className="input-cell" rows="4"></textarea></td>
           </tr>
 
         </tbody>
