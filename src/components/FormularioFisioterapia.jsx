@@ -27,6 +27,14 @@ const FormularioHistoriaClinica = () => {
   // Estado para áreas seleccionadas en el cuerpo
   const [selectedAreas, setSelectedAreas] = useState([]);
 
+  // Función para generar un ID de paciente aleatorio
+  const generatePatientID = () => {
+    const randomNum = Math.floor(Math.random() * 10000); // Genera un número aleatorio
+    return `PAC${randomNum.toString().padStart(5, '0')}`; // Da formato PAC00001
+  };
+
+  const [patientID] = useState(generatePatientID());
+
   const handleAreaClick = (area) => {
     if (selectedAreas.includes(area)) {
       setSelectedAreas(selectedAreas.filter(a => a !== area)); // Quitar la "X" si ya estaba seleccionada
@@ -42,7 +50,15 @@ const FormularioHistoriaClinica = () => {
           {/* Sección de Información Personal */}
           <tr>
             <td data-label="Nombre:">Nombre:</td>
-            <td colSpan="5"><input type="text" className="input-cell" /></td>
+            <td colSpan="2"><input type="text" className="input-cell" placeholder="Nombre" /></td>
+            <td data-label="Apellido Paterno:">Apellido Paterno:</td>
+            <td colSpan="2"><input type="text" className="input-cell" placeholder="Apellido Paterno" /></td>
+          </tr>
+          <tr>
+            <td data-label="Apellido Materno:">Apellido Materno:</td>
+            <td colSpan="2"><input type="text" className="input-cell" placeholder="Apellido Materno" /></td>
+            <td data-label="ID-PACIENTE:">ID-PACIENTE:</td>
+            <td colSpan="2"><input type="text" className="input-cell" value={patientID} readOnly /></td>
           </tr>
           <tr>
             <td data-label="Fecha de nacimiento:">Fecha de nacimiento:</td>
