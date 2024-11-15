@@ -252,6 +252,15 @@ const FormularioHistoriaClinica = () => {
             <td colSpan="5"><textarea id="nota-referencia" className="input-cell" rows="4"></textarea></td>
           </tr>
 
+          {/* Botón de Guardar */}
+          <tr>
+            <td colSpan="6" className="boton-container">
+              <button className="boton-guardar">Guardar</button>
+            </td>
+          </tr>
+
+                  
+
         </tbody>
       </table>
     </div>
