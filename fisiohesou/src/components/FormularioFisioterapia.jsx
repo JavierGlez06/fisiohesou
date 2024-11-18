@@ -67,7 +67,6 @@ const FormularioHistoriaClinica = () => {
     const randomNum = Math.floor(Math.random() * 10000); // Genera un número aleatorio
     return `PAC${randomNum.toString().padStart(5, '0')}`; // Da formato PAC00001
   };
-
   const [patientID] = useState(generatePatientID());
 
   const handleAreaClick = (area) => {
