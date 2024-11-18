@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   host: 'localhost', // localhost para XAMPP
   user: 'root', // El usuario por defecto de MySQL en XAMPP es 'root'
   password: '', // Por defecto, XAMPP no tiene contraseña para 'root'
-  database: 'login_app' // Cambia esto al nombre de tu base de datos
+  database: 'fisioterapia' // Cambia esto al nombre de tu base de datos
 });
 
 // Conexión a la base de datos
