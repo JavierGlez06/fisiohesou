@@ -1,22 +1,43 @@
 import React, { useState } from 'react';
-import './Login.css'; // Asegúrate de tener el archivo de estilos importado
+import axios from 'axios'; // Importar Axios para realizar solicitudes HTTP
+import './Login.css';
 
 const Login = ({ onLogin }) => {
   const [isPaciente, setIsPaciente] = useState(true);
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin(isPaciente);
+
+    try {
+      // Realizar una solicitud POST al servidor con las credenciales de inicio de sesión
+      const response = await axios.post('http://localhost:5000/login', {
+        username,
+        password,
+      });
+
+      // Verificar si la respuesta es exitosa
+      if (response.data.success) {
+        // Llamar a la función onLogin con el valor de isPaciente para manejar el estado de inicio de sesión
+        onLogin(isPaciente);
+        alert('Inicio de sesión exitoso');
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      alert('Hubo un problema al iniciar sesión. Por favor, intenta de nuevo.');
+    }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(true);
 
-    // Desactiva la visibilidad de la contraseña después de 4 segundos
     setTimeout(() => {
       setShowPassword(false);
-    }, 4000); // 4000 ms = 4 segundos
+    }, 4000);
   };
 
   return (
@@ -24,20 +45,24 @@ const Login = ({ onLogin }) => {
       <img src="logo.png" alt="Logo" className="logo" />
       <h1>Hesou Fisioterapia</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Nombre de usuario" className="input-field" required />
-
-        {/* Cuadro de contraseña con opción de mostrar/ocultar usando ícono */}
+        <input
+          type="text"
+          placeholder="Nombre de usuario"
+          className="input-field"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
         <div className="password-container">
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             placeholder="Contraseña"
             className="input-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <span
-            className="toggle-password-icon"
-            onClick={togglePasswordVisibility}
-          >
+          <span className="toggle-password-icon" onClick={togglePasswordVisibility}>
             {showPassword ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +98,6 @@ const Login = ({ onLogin }) => {
             )}
           </span>
         </div>
-
-        {/* Switch para seleccionar si es paciente */}
         <div className="toggle-container">
           <label htmlFor="paciente">Paciente</label>
           <label className="switch">
@@ -88,7 +111,6 @@ const Login = ({ onLogin }) => {
             <span className="slider round"></span>
           </label>
         </div>
-
         <button type="submit" className="login-btn">Iniciar Sesión</button>
       </form>
     </div>
