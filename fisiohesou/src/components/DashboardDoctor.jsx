@@ -6,6 +6,7 @@ import es from 'date-fns/locale/es'; // Para mostrar el calendario en español
 import './DashboardDoctor.css';
 import FormularioFisioterapia from './FormularioFisioterapia'; // Importa el nuevo formulario
 import NotaEvolucion from './NotaEvolucion';
+import NotaReferencia from './NotaReferencia';
 import VistaExp from './VistaExp'; // Importa el nuevo componente VistaExp
 
 registerLocale('es', es); // Registrar el idioma español para el calendario
@@ -39,12 +40,13 @@ const DashboardDoctor = () => {
           <button className="tab-button" onClick={() => openTab('consultas')}>Consultas</button>
           <button className="tab-button" onClick={() => openTab('forms')}>Historia clinica</button>
           <button className="tab-button" onClick={() => openTab('notaEvolucion')}>Nota de Evolución</button>
+          <button className="tab-button" onClick={() => openTab('notaReferencia')}>Nota de referencia</button>
           <button className="tab-button" onClick={() => openTab('vista')}>Vista</button> {/* Nuevo botón "Vista" */}
         </nav>
       </header>
 
       {/* Mostrar calendario si no está en las pestañas 'expedientes' o 'forms' */}
-      {activeTab !== 'forms' && activeTab !== 'notaEvolucion' && activeTab !== 'vista' && (
+      {activeTab !== 'forms' && activeTab !== 'notaEvolucion' && activeTab !== 'notaReferencia' && activeTab !== 'vista' && (
         <div className="calendar-container">
           <h3>Calendario de Consultas</h3>
           <DatePicker
@@ -82,6 +84,11 @@ const DashboardDoctor = () => {
         </div>
       )}
 
+{activeTab === 'notaReferencia' && (
+        <div id="nota-referencia" className="tab-content-doctor">
+          <NotaReferencia /> {/* Renderiza el componente NotaReferencia */}
+        </div>
+      )}
 
       {/* Pestaña VistaExp (Nueva vista) */}
       {activeTab === 'vista' && (

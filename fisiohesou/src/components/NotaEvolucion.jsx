@@ -17,34 +17,34 @@ const NotaEvolucion = () => {
             <table>
                 <tbody>
                     {/* Fecha */}
-                    <tr>
+                    <tr className="reduced-spacing">
                         <td data-label="Fecha:">Fecha:</td>
                         <td><input
                             type="date"
-                            className="input-cell"
+                            className="input-cell small-input"
                             value={fecha}
                             onChange={(e) => setFecha(e.target.value)}
                         /></td>
                     </tr>
                     {/* Hora */}
-                    <tr>
+                    <tr className="reduced-spacing">
                         <td data-label="Hora:">Hora:</td>
                         <td><input
                             type="time"
-                            className="input-cell"
+                            className="input-cell small-input"
                             value={hora}
                             onChange={(e) => setHora(e.target.value)}
                         /></td>
                     </tr>
                     {/* Nombre del Fisioterapeuta */}
-                    <tr>
+                    <tr className="reduced-spacing">
                         <td data-label="Nombre del fisioterapeuta:">Nombre del fisioterapeuta:</td>
                         <td><input
                             type="text"
-                            className="input-cell"
+                            className="input-cell small-input"
                             value={nombreFisioterapeuta}
                             onChange={(e) => setNombreFisioterapeuta(e.target.value)}
-                            placeholder="Nombre del fisioterapeuta"
+                            placeholder="Nombre"
                         /></td>
                     </tr>
                     {/* Campo S: con gran área de texto */}
@@ -54,7 +54,7 @@ const NotaEvolucion = () => {
                             className="input-cell large-textarea"
                             value={observaciones}
                             onChange={(e) => setObservacionesS(e.target.value)}
-                            placeholder="Escriba aquí las observaciones..."
+                            placeholder=""
                         ></textarea></td>
                     </tr>
                     {/* Campo O */}
@@ -64,7 +64,7 @@ const NotaEvolucion = () => {
                             className="input-cell large-textarea"
                             value={observacionesO}
                             onChange={(e) => setObservacionesO(e.target.value)}
-                            placeholder="Escriba aquí las observaciones objetivas..."
+                            placeholder=""
                         ></textarea></td>
                     </tr>
                     {/* Campo A */}
@@ -74,7 +74,7 @@ const NotaEvolucion = () => {
                             className="input-cell large-textarea"
                             value={observacionesA}
                             onChange={(e) => setObservacionesA(e.target.value)}
-                            placeholder="Escriba aquí el análisis..."
+                            placeholder=""
                         ></textarea></td>
                     </tr>
                     {/* Campo P */}
@@ -84,7 +84,7 @@ const NotaEvolucion = () => {
                             className="input-cell large-textarea"
                             value={observacionesP}
                             onChange={(e) => setObservacionesP(e.target.value)}
-                            placeholder="Escriba aquí el plan..."
+                            placeholder=""
                         ></textarea></td>
                     </tr>
                 </tbody>
