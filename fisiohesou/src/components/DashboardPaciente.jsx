@@ -62,32 +62,35 @@ const DashboardPaciente = () => {
     };
 
     try {
+      // Enviar los datos al backend
       const response = await fetch('http://localhost:5000/guardar_cita', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // Asegurarnos de que se envíe JSON
         },
         body: JSON.stringify(formData), // Convertir el objeto a JSON
       });
 
-      const data = await response.json();
+      const data = await response.json(); // Obtener la respuesta del servidor
 
       if (response.ok) {
-        console.log(data); // Puedes manejar la respuesta del servidor aquí
+        // Si la cita fue guardada correctamente
         setCitaConfirmada({
           fechaCita: fechaCita,
           horaCita,
           doctorAsignado,
           comentarios,
         });
-        // Limpiar el formulario
+
+        // Limpiar el formulario después de guardarlo
         setFechaCita(null);
         setHoraCita('');
         setDoctorAsignado('');
         setComentarios('');
-        setMensajeError('');
+        setMensajeError(''); // Limpiar mensajes de error
+
       } else {
-        // Manejar errores del servidor
+        // Si hay un error en la respuesta del servidor
         setMensajeError(data.message || 'Ocurrió un error al guardar la cita.');
       }
     } catch (error) {
@@ -95,7 +98,7 @@ const DashboardPaciente = () => {
       setMensajeError('Ocurrió un error al conectar con el servidor.');
     }
   };
-  
+
   // ---------- Fin del código actualizado ----------
 
   return (
