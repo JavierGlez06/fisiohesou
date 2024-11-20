@@ -1,0 +1,149 @@
+.form-container {
+    width: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.document-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.document-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-left {
+    width: 200px; /* Ajusta según lo necesario */
+    height: auto;
+}
+
+/* Logo derecho */
+.logo-right {
+    width: 100px; /* Tamaño específico para el logo derecho */
+    height: auto; /* Mantener proporción */
+}
+
+.document-address {
+    margin-top: 10px; /* Separación del contenido superior */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 16px; /* Tamaño del texto */
+    color: #6460AA; /* Color del texto */
+    padding-left: 10px; /* Ajusta la posición horizontal del texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+.document-contact {
+    margin-top: 10px; /* Espaciado entre el texto anterior y este */
+    text-align: left; /* Alineación a la izquierda */
+    font-size: 16px; /* Tamaño del texto */
+    color: #6460AA; /* Color del texto */
+    padding-left: 10px; /* Alineación horizontal */
+    line-height: 1.5; /* Espaciado entre líneas */
+    font-weight: bold; /* Resaltar el texto */
+}
+
+.document-date {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    font-size: 14px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    margin-top: -10px; /* Ajusta el espacio para que quede alineado con el texto */
+}
+
+.input-date {
+    border: 1px solid #ccc; /* Bordes de los inputs */
+    padding: 2px 5px; /* Espaciado interno de los inputs */
+    font-size: 14px; /* Tamaño del texto dentro de los inputs */
+    width: 150px; /* Ancho de los inputs */
+    margin-right: 5px; /* Espacio entre los inputs */
+}
+
+.input-professional {
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    font-size: 14px;
+    width: 150px;
+    margin-left: 5px;
+    display: inline-block; /* Esto asegurará que se alinee en la misma línea que el texto */
+}
+
+.document-professional {
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 14px;
+    color: #333;
+    padding-left: 10px; /* Ajusta la alineación horizontal del texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+.input-message {
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    font-size: 14px;
+    width: 150px;
+    margin-left: 5px;
+    display: inline-block; /* Asegura que el input se alinee en la misma línea */
+}
+
+.document-message {
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 14px;
+    color: #333;
+    padding-left: 10px; /* Ajusta la alineación horizontal del texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+    margin-top: 10px; /* Añadir margen superior si lo necesitas */
+}
+
+.input-cif {
+    width: 100%; /* Ocupa todo el espacio disponible */
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+/* Establece el mismo tamaño de fuente para todos los textos estáticos */
+.document-professional p, 
+.document-message p, 
+.document-situation p, 
+.document-cif p, 
+.document-objective p, 
+.document-thankyou p, 
+.document-signature p, 
+.document-name p, 
+.document-cedula p, 
+.document-cargo-clinica p {
+    font-size: 16px; /* Ajusta el tamaño de fuente */
+    line-height: 1.5; /* Asegura un espaciado adecuado entre líneas */
+    color: #333; /* Establece el color del texto */
+}
+
+/* Establecer el fondo de los inputs a blanco */
+input {
+    background-color: #fff; /* Fondo blanco para los inputs */
+}
+
+/* Cambiar color de placeholders en inputs específicos */
+.input-message::placeholder,
+.input-professional::placeholder,
+.input-cif::placeholder {
+    color: #B0B0B0; /* Gris para los placeholders */
+    opacity: 1; /* Asegura que el color se muestre completamente */
+}
+
