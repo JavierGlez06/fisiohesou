@@ -4,8 +4,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es'; // Para mostrar el calendario en español
 import './DashboardDoctor.css';
-import ExpedienteForm from './ExpedienteForm'; // Importa el formulario de expedientes
 import FormularioFisioterapia from './FormularioFisioterapia'; // Importa el nuevo formulario
+import NotaEvolucion from './NotaEvolucion';
+import NotaReferencia from './NotaReferencia';
 import VistaExp from './VistaExp'; // Importa el nuevo componente VistaExp
 
 registerLocale('es', es); // Registrar el idioma español para el calendario
@@ -37,14 +38,15 @@ const DashboardDoctor = () => {
         <h2>Bienvenido Doctor</h2>
         <nav>
           <button className="tab-button" onClick={() => openTab('consultas')}>Consultas</button>
-          <button className="tab-button" onClick={() => openTab('expedientes')}>Expedientes Médicos</button>
-          <button className="tab-button" onClick={() => openTab('forms')}>Forms</button>
+          <button className="tab-button" onClick={() => openTab('forms')}>Historia clinica</button>
+          <button className="tab-button" onClick={() => openTab('notaEvolucion')}>Nota de Evolución</button>
+          <button className="tab-button" onClick={() => openTab('notaReferencia')}>Nota de referencia</button>
           <button className="tab-button" onClick={() => openTab('vista')}>Vista</button> {/* Nuevo botón "Vista" */}
         </nav>
       </header>
 
       {/* Mostrar calendario si no está en las pestañas 'expedientes' o 'forms' */}
-      {activeTab !== 'expedientes' && activeTab !== 'forms' && activeTab !== 'vista' && (
+      {activeTab !== 'forms' && activeTab !== 'notaEvolucion' && activeTab !== 'notaReferencia' && activeTab !== 'vista' && (
         <div className="calendar-container">
           <h3>Calendario de Consultas</h3>
           <DatePicker
@@ -68,19 +70,23 @@ const DashboardDoctor = () => {
         </div>
       )}
 
-      {/* Pestaña de Expedientes Médicos */}
-      {activeTab === 'expedientes' && (
-        <div id="expedientes-doctor" className="tab-content-doctor">
-          <h3>Historia clínica de fisioterapia</h3>
-          <ExpedienteForm /> {/* Muestra el formulario de expedientes */}
-        </div>
-      )}
-
       {/* Pestaña de Forms */}
       {activeTab === 'forms' && (
         <div id="forms-doctor" className="tab-content-doctor">
           <h3>Formulario de Fisioterapia</h3>
           <FormularioFisioterapia /> {/* Muestra el nuevo formulario */}
+        </div>
+      )}
+
+      {activeTab === 'notaEvolucion' && (
+        <div id="nota-evolucion" className="tab-content-doctor">
+          <NotaEvolucion /> {/* Renderiza el componente NotaEvolucion */}
+        </div>
+      )}
+
+{activeTab === 'notaReferencia' && (
+        <div id="nota-referencia" className="tab-content-doctor">
+          <NotaReferencia /> {/* Renderiza el componente NotaReferencia */}
         </div>
       )}
 
