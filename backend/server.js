@@ -51,6 +51,78 @@ app.post('/guardar_cita', (req, res) => {
   });
 });
 
+// Formulario de expedientes Medicos
+// Ruta para guardar los datos del formulario
+app.post('/guardar', (req, res) => {
+    const {
+      nombre,
+      apellidoPaterno,
+      apellidoMaterno,
+      fechaNacimiento,
+      edad,
+      sexo,
+      talla,
+      peso,
+      imc,
+      estadoCivil,
+      ocupacion,
+      lugarNacimiento,
+      nacionalidad,
+      domicilioActual,
+      localidad,
+      cp,
+      municipio,
+      estado,
+      colonia,
+      telefonoCasa,
+      celular,
+      emergenciaContacto,
+      emergenciaCelular,
+      frecuenciaCardiaca,
+      sp02,
+      temperatura,
+      presionArterial,
+      frecuenciaRespiratoria,
+      motivoConsulta,
+      padecimientoActual,
+      tratamientoPrevio,
+      antecedentes,
+      notaEvolucion,
+      notaReferencia
+    } = req.body;
+  
+    // Inserción de los datos en la base de datos
+    const query = `INSERT INTO pacientes (
+      nombre, apellido_paterno, apellido_materno, fecha_nacimiento, edad, sexo, talla, peso, imc, estado_civil, 
+      ocupacion, lugar_nacimiento, nacionalidad, domicilio_actual, localidad, cp, municipio, estado, colonia, 
+      telefono_casa, celular, emergencia_contacto, emergencia_celular, frecuencia_cardiaca, sp02, temperatura, 
+      presion_arterial, frecuencia_respiratoria, motivo_consulta, padecimiento_actual, tratamiento_previo, 
+      antecedentes, nota_evolucion, nota_referencia
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  
+    db.query(query, [
+      nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, edad, sexo, talla, peso, imc, estadoCivil, 
+      ocupacion, lugarNacimiento, nacionalidad, domicilioActual, localidad, cp, municipio, estado, colonia, 
+      telefonoCasa, celular, emergenciaContacto, emergenciaCelular, frecuenciaCardiaca, sp02, temperatura, 
+      presionArterial, frecuenciaRespiratoria, motivoConsulta, padecimientoActual, tratamientoPrevio, 
+      antecedentes, notaEvolucion, notaReferencia
+    ], (err, result) => {
+      if (err) {
+        console.error('Error al insertar los datos: ', err);
+        res.status(500).json({ error: 'Error al guardar los datos' });
+        return;
+      }
+      res.status(200).json({ message: 'Datos guardados correctamente', patientId: result.insertId });
+    });
+  });
+  
+
+// nuevo endopoint para obtener los pacientes
+
+
+
+// --------------------------------------------
+
 // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

@@ -24,42 +24,6 @@ const FormularioHistoriaClinica = () => {
     "Pasatiempo"
   ];
 
-// new code
-
-  const handleHistoriaSubmit = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('pacienteId', patientID);
-    formData.append('nombre', nombre);
-    formData.append('apellidoPaterno', apellidoPaterno);
-    formData.append('apellidoMaterno', apellidoMaterno);
-    formData.append('fechaNacimiento', fechaNacimiento);
-    formData.append('edad', edad);
-    formData.append('sexo', sexo);
-    formData.append('talla', talla);
-    formData.append('peso', peso);
-    formData.append('imc', imc);
-    // ... Agregar todos los campos necesarios
-
-    fetch('guardar_historia_clinica.php', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  };
-
-
-//code que ya se tenia
-
-
-
   // Función para generar un ID de paciente aleatorio
   const generatePatientID = () => {
     const randomNum = Math.floor(Math.random() * 10000); // Genera un número aleatorio
@@ -67,7 +31,11 @@ const FormularioHistoriaClinica = () => {
   };
   const [patientID] = useState(generatePatientID());
 
+// new code
 
+
+
+//fin new code
   
   return (
     <div className="form-container">
