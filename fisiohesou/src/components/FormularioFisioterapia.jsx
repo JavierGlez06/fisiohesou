@@ -240,18 +240,6 @@ const FormularioHistoriaClinica = () => {
           {/* Sección de Selección de Cuerpo Humano */}
           
 
-          {/* Nota de evolución */}
-          <tr>
-            <td data-label="Nota de evolución:">Nota de evolución:</td>
-            <td colSpan="5"><textarea id="nota-evolucion" className="input-cell" rows="4"></textarea></td>
-          </tr>
-
-          {/* Nota de referencia */}
-          <tr>
-            <td data-label="Nota de referencia:">Nota de referencia:</td>
-            <td colSpan="5"><textarea id="nota-referencia" className="input-cell" rows="4"></textarea></td>
-          </tr>
-
           {/* Botón de Guardar */}
           <tr>
             <td colSpan="6" className="boton-container">

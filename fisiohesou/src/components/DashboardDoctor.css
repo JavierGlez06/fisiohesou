@@ -152,3 +152,16 @@ h3 {
 .tab-button:focus {
   outline: 3px solid var(--color-primary); /* Borde visible cuando el botón está enfocado */
 }
+
+/* Estilo para el contenedor de la pestaña de Nota de Evolución */
+#nota-evolucion {
+  width: 100%; /* Esto asegurará que ocupe todo el ancho disponible */
+  max-width: 1200px; /* Puedes ajustar el máximo ancho según lo que necesites */
+  margin: 0 auto; /* Centra el contenedor en la página */
+  padding: 20px; /* Puedes agregar un poco de padding si lo deseas */
+}
+
+/* Estilo para el componente específico NotaEvolucion */
+.nota-evolucion {
+  width: 100%; /* Asegura que el componente de Nota de Evolución ocupe todo el contenedor */
+}
