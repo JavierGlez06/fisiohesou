@@ -32,6 +32,72 @@ const FormularioHistoriaClinica = () => {
   const [patientID] = useState(generatePatientID());
 
 // new code
+const guardarHistoriaClinica = async (datosFormulario) => {
+  try {
+    const response = await fetch('http://localhost:5000/guardar_historia_clinica', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(datosFormulario),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      // Actualiza el estado con el mensaje de éxito
+      setMensajeExito("La historia clínica se guardó exitosamente.");
+    } else {
+      // Si hubo un error, mostrar un mensaje de error
+      setMensajeExito("Error al guardar la historia clínica. Inténtalo nuevamente.");
+    }
+  } catch (error) {
+    console.error('Error de conexión:', error);
+    setMensajeExito("Hubo un problema de conexión. Intenta nuevamente.");
+  }
+};
+
+
+const [formData, setFormData] = useState({
+  nombre: '',
+  apellidoPaterno: '',
+  apellidoMaterno: '',
+  fechaNacimiento: '',
+  edad: '',
+  sexo: '',
+  talla: '',
+  peso: '',
+  imc: '',
+  estadoCivil: '',
+  ocupacion: '',
+  lugarNacimiento: '',
+  nacionalidad: '',
+  domicilio: '',
+  localidad: '',
+  cp: '',
+  municipio: '',
+  estado: '',
+  colonia: '',
+  telefonoCasa: '',
+  celular: '',
+  emergenciaNombre: '',
+  emergenciaCelular: '',
+  frecuenciaCardiaca: '',
+  sp02: '',
+  temperatura: '',
+  presionArterial: '',
+  frecuenciaRespiratoria: '',
+  motivoConsulta: '',
+  padecimientoActual: '',
+  tratamientoPrevio: '',
+  preguntasAntecedentes: {} // Aquí guardas las respuestas a las preguntas
+});
+
+// Al hacer submit, enviar los datos
+const handleSubmit = () => {
+  guardarHistoriaClinica(formData);
+};
+
+
 
 
 
@@ -209,11 +275,11 @@ const FormularioHistoriaClinica = () => {
           
 
           {/* Botón de Guardar */}
-          <tr>
-            <td colSpan="6" className="boton-container">
-              <button className="boton-guardar">Guardar</button>
-            </td>
-          </tr>
+      <tr>
+        <td colSpan="6" className="boton-container">
+          <button className="boton-guardar" onClick={handleSubmit}>Guardar</button>
+        </td>
+      </tr>
 
                   
 

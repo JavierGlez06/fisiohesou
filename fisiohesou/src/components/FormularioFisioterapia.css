@@ -141,3 +141,19 @@ td input, td textarea {
     left: 40%;
   }
 }
+
+
+
+.mensaje-exito {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mensaje-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
