@@ -47,6 +47,52 @@ db.connect((err) => {
   }
 });
 
+// Ruta para registrar usuarios
+app.post("/register", (req, res) => {
+  const { name, email, password, role } = req.body;
+
+  if (!name || !email || !password || !role) {
+    return res.status(400).json({ error: "Todos los campos son obligatorios." });
+  }
+
+  const query = "INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)";
+  db.query(query, [name, email, password, role], (err, result) => {
+    if (err) {
+      console.error("Error al insertar datos:", err.message);
+      return res.status(500).json({ error: "Error al registrar al usuario." });
+    }
+    res.status(201).json({ message: "Usuario registrado exitosamente." });
+  });
+});
+
+// Ruta para manejar el inicio de sesión
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email y contraseña son obligatorios." });
+  }
+
+  const query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+  db.query(query, [email, password], (err, results) => {
+    if (err) {
+      console.error("Error al consultar la base de datos:", err.message);
+      return res.status(500).json({ error: "Error al consultar la base de datos." });
+    }
+
+    if (results.length > 0) {
+      const user = results[0]; // Información del usuario
+      res.json({ 
+        success: true, 
+        message: "Inicio de sesión exitoso", 
+        user: { id: user.id, name: user.nombre, role: user.rol } 
+      });
+    } else {
+      res.status(401).json({ success: false, message: "Credenciales incorrectas" });
+    }
+  });
+});
+
 // Ruta para guardar una cita médica
 app.post('/guardar_cita', (req, res) => {
   const { fechaCita, horaCita, doctorAsignado, comentarios, pacienteNombre, pacienteId } = req.body;
