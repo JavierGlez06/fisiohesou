@@ -1,112 +1,116 @@
-/* General input alignment for smaller fields */
-.input-cell.small-input {
-    max-width: none; /* Elimina el límite de ancho */
-    width: 100%; /* Asegura que ocupen todo el ancho del contenedor */
-    box-sizing: border-box; /* Incluye padding y border en el ancho total */
-}
-
-/* Alinear los campos más pequeños con los más grandes */
-.reduced-spacing td {
-    padding: 5px; /* Espaciado moderado */
-    vertical-align: top; /* Alinea el contenido en la parte superior */
-}
-
-.reduced-spacing .input-cell {
-    margin: 0;
-    padding: 6px;
-    font-size: 14px;
-    width: 100%; /* Asegura que ocupen el mismo ancho que los textarea */
-    box-sizing: border-box; /* Incluye padding y border en el ancho total */
-}
-
-
-
-/* General styles for the form container */
 .form-container {
-    margin: 20px;
+    width: auto;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Table styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-td {
-    padding: 10px;
+.document-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-/* General input styles */
-.input-cell {
-    width: 100%;
+.document-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-left {
+    width: 200px; /* Ajusta según lo necesario */
+    height: auto;
+}
+
+/* Logo derecho */
+.logo-right {
+    width: 100px; /* Tamaño específico para el logo derecho */
+    height: auto; /* Mantener proporción */
+}
+
+/* Fecha, Hora y Nombre del Fisioterapeuta */
+.document-date-left,
+.document-additional-info {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    padding-left: 20px; /* Alinea con el logo izquierdo */
+}
+
+.logo-left {
+    width: 200px; /* Asegúrate de que este tamaño coincide con tu logo */
+    height: auto;
+    margin-left: 20px; /* Margen izquierdo para alinear */
+}
+
+/* Bordes predeterminados y apariencia en los campos de hora y nombre */
+.input-date,
+.input-time,
+.input-name {
+    color: #333; /* Color del texto */
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ccc; /* Borde gris suave */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 4px 8px; /* Relleno interno */
+    font-size: 16px; /* Tamaño de fuente */
+    width: auto;
+    display: inline-block;
+    outline: none; /* Eliminar el borde al enfocar */
+    height: 15px; /* Establecer una altura uniforme */
+}
+
+/* Cambiar el color de los placeholders también para asegurar que sean visibles */
+.input-date::placeholder,
+.input-time::placeholder,
+.input-name::placeholder,
+.input-textarea::placeholder {
+    color: #B0B0B0; /* Gris claro para los placeholders */
+    opacity: 1; /* Asegura que el color se muestre completamente */
+}
+
+/* Separación entre las líneas */
+.document-additional-info p {
+    margin-top: 5px;
+}
+
+/* Sección S, O, A, y P: Configurar el textarea */
+.document-textarea {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    padding-left: 20px; /* Alinea con el logo izquierdo */
+}
+
+.input-textarea {
+    display: block;
+    color: #333; /* Color oscuro para el texto */
+    width: calc(100% - 40px); /* Máximo ancho, respetando el padding del contenedor */
+    max-width: 100%; /* No excede el ancho del contenedor */
+    height: 7rem; /* Altura de 7 renglones */
     padding: 8px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
+    resize: none; /* Eliminar opción de redimensionar */
+    background-color: #fff;
 }
 
-/* Small input size for date, time, and text fields */
-.input-cell.small-input {
-    max-width: 200px; /* Reduce size for smaller inputs */
-}
-
-/* Estilo específico para el textarea del campo S: */
-.large-textarea {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    max-width: 100%; /* Asegura que no exceda el contenedor */
-    min-width: 800px; /* Define un ancho mínimo */
-    height: 150px; /* Ajusta la altura del textarea */
-    padding: 10px; /* Espacio interno para mayor legibilidad */
-    font-size: 1rem; /* Tamaño de fuente más cómodo */
-    resize: vertical; /* Permite que el usuario ajuste solo la altura */
-    border: 1px solid #ccc; /* Borde para mayor claridad */
-    border-radius: 4px; /* Bordes redondeados */
-}
-
-.signature-container {
-    display: flex; /* Usamos flexbox para alinear los elementos en línea */
-    align-items: center; /* Alinea verticalmente al centro */
-    justify-content: flex-start; /* Alinea los elementos al principio (a la izquierda) */
-    margin-top: 80px;
-}
-
-.signature-container p {
-    margin: 0 15px 0 0; /* Añade un pequeño espacio a la derecha de la leyenda */
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.signature-line {
-    width: 300px;
-    height: 1px;
-    background-color: black;
-}
-
-
-/* Ajuste para los campos pequeños (fecha, hora, nombre del fisioterapeuta) */
-.reduced-spacing .input-cell.small-input {
-    margin-left: 0; /* Asegúrate de que no tengan margen adicional */
-    text-align: left; /* Alinea el texto hacia la izquierda */
-    display: block; /* Para asegurarse de que ocupa toda la celda */
-}
-
-/* Los textarea grandes no se tocan */
-.large-textarea {
-    margin-left: 0; /* Mantén los grandes en su posición */
-    width: 100%; /* Sin cambios en tamaño o posición */
-}
-
-/* Asegura que la tabla esté alineada correctamente */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-td {
-    vertical-align: top; /* Asegura que los títulos estén alineados con los campos */
-    padding: 10px; /* Consistencia en el espaciado */
+/* Separación entre las líneas */
+.document-textarea p {
+    margin-top: 5px;
 }

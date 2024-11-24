@@ -70,7 +70,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombreProfesional}
                             onChange={(e) => setNombreProfesional(e.target.value)}
-                            placeholder="[Nombre del Profesional]"
+                            placeholder="Nombre del Profesional"
                             className="input-professional"
                         />
                         :
@@ -83,7 +83,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombrePaciente}
                             onChange={(e) => setNombrePaciente(e.target.value)}
-                            placeholder="[Nombre del Paciente]"
+                            placeholder="Nombre del Paciente"
                             className="input-message"
                         />
                         de&nbsp;
@@ -100,7 +100,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombrePaciente}
                             onChange={(e) => setNombrePaciente(e.target.value)}
-                            placeholder="[Nombre del Paciente]"
+                            placeholder="Nombre del Paciente"
                             className="input-message"
                         />
                         para una evaluación y orientación especializada en su área profesional.
@@ -113,7 +113,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombrePaciente}
                             onChange={(e) => setNombrePaciente(e.target.value)}
-                            placeholder="[Nombre del paciente]"
+                            placeholder="Nombre del paciente"
                             className="input-message"
                         />
                         presenta&nbsp;
@@ -121,7 +121,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={descripcionProblema}
                             onChange={(e) => setDescripcionProblema(e.target.value)}
-                            placeholder="[breve descripción del problema o condición que ha sido tratado en fisioterapia]"
+                            placeholder="breve descripción del problema o condición que ha sido tratado en fisioterapia"
                             className="input-message"
                         />
                         Durante el tratamiento, hemos trabajado en&nbsp;
@@ -129,7 +129,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={descripcionTerapias}
                             onChange={(e) => setDescripcionTerapias(e.target.value)}
-                            placeholder="[descripción breve de las terapias]"
+                            placeholder="descripción breve de las terapias"
                             className="input-message"
                         />
                     </p>
@@ -144,7 +144,7 @@ const NotaReferencia = () => {
                                 type="text"
                                 value={codigosCIF}
                                 onChange={(e) => setCodigosCIF(e.target.value)}
-                                placeholder="[Códigos de la CIF]"
+                                placeholder="Códigos de la CIF"
                                 className="input-cif" // Aplicamos la clase que alinea a la izquierda
                             />
                         </strong>
@@ -157,7 +157,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombrePaciente}
                             onChange={(e) => setNombrePaciente(e.target.value)}
-                            placeholder="[Nombre del paciente]"
+                            placeholder="Nombre del paciente"
                             className="input-message"
                         />
                         está en proceso de recuperación y considerando el impacto que una orientación especializada puede 
@@ -174,7 +174,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={nombrePaciente}
                             onChange={(e) => setNombrePaciente(e.target.value)}
-                            placeholder="[Nombre del Paciente]"
+                            placeholder="Nombre del Paciente"
                             className="input-message"
                         />
                         , no dude en ponerse en contacto conmigo. Estoy disponible para cualquier consulta o coordinación 
@@ -202,7 +202,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={cedulaProfesional}
                             onChange={(e) => setCedulaProfesional(e.target.value)}
-                            placeholder="[Cédula Profesional]"
+                            placeholder="Cédula Profesional"
                             className="input-cedula"
                         />
                     </p>
@@ -214,7 +214,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={cargo}
                             onChange={(e) => setCargo(e.target.value)}
-                            placeholder="[Tu Cargo]"
+                            placeholder="Tu Cargo"
                             className="input-cargo"
                         />
                         &nbsp;
@@ -222,7 +222,7 @@ const NotaReferencia = () => {
                             type="text"
                             value={clinicaNombre}
                             onChange={(e) => setClinicaNombre(e.target.value)}
-                            placeholder="[Nombre de tu Clínica o Centro]"
+                            placeholder="Nombre de tu Clínica o Centro"
                             className="input-clinica"
                         />
                     </p>
