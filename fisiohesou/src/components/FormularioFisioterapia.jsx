@@ -4,6 +4,7 @@ import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
 
 const FormularioFisioterapia = () => {
+    
     return (
         <div className="form-container">
             <h2>Formulario de Fisioterapia</h2>
@@ -349,7 +350,6 @@ const FormularioFisioterapia = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sección para las nuevas preguntas */}
                 <div className="preguntas-container">
                     <div className="pregunta">
                         <label>HA</label>
@@ -373,7 +373,6 @@ const FormularioFisioterapia = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sección para las nuevas preguntas */}
                 <div className="preguntas-container">
                     <div className="pregunta">
                         <label>Cáncer</label>
@@ -397,7 +396,6 @@ const FormularioFisioterapia = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sección para las nuevas preguntas */}
                 <div className="preguntas-container">
                     <div className="pregunta">
                         <label>Alergias</label>
@@ -421,7 +419,6 @@ const FormularioFisioterapia = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sección para las nuevas preguntas */}
                 <div className="preguntas-container">
                     <div className="pregunta">
                         <label>Otros</label>
@@ -444,7 +441,6 @@ const FormularioFisioterapia = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sección para las nuevas preguntas */}
                 <div className="preguntas-container">
                     <div className="pregunta">
                         <label>Psiquiátricos</label>

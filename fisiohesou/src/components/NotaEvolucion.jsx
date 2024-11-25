@@ -102,7 +102,7 @@ const NotaEvolucion = () => {
                         <textarea
                             value={textoA}
                             onChange={(e) => setTextoA(e.target.value)}
-                            placeholder="[Escribe aquí]"
+                            placeholder="Escribe aquí"
                             className="input-textarea"
                         ></textarea>
                     </p>
@@ -114,7 +114,7 @@ const NotaEvolucion = () => {
                         <textarea
                             value={textoP}
                             onChange={(e) => setTextoP(e.target.value)}
-                            placeholder="[Escribe aquí]"
+                            placeholder="Escribe aquí"
                             className="input-textarea"
                         ></textarea>
                     </p>

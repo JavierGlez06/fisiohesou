@@ -147,3 +147,8 @@ input {
     opacity: 1; /* Asegura que el color se muestre completamente */
 }
 
+/* Asegurar que el color del texto sea visible en los inputs y textareas */
+input, textarea {
+    color: #333; /* Color del texto (oscuro) */
+    background-color: #fff; /* Fondo blanco */
+}
