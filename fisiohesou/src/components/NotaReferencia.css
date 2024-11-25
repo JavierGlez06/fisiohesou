@@ -152,3 +152,44 @@ input, textarea {
     color: #333; /* Color del texto (oscuro) */
     background-color: #fff; /* Fondo blanco */
 }
+
+.save-button {
+    background-color: #6a0dad; /* Color morado */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.save-button:hover {
+    background-color: #5a0ba5; /* Color morado más oscuro al pasar el mouse */
+}
+
+.save-button:active {
+    background-color: #4a0b85; /* Color más oscuro cuando se presiona */
+}
+
+.pdf-button {
+    background-color: #d9534f; /* Color rojo */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.pdf-button:hover {
+    background-color: #c9302c; /* Color rojo más oscuro al pasar el mouse */
+}
+
+.pdf-button:active {
+    background-color: #ac2925; /* Color más oscuro cuando se presiona */
+}

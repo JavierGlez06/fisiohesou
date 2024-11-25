@@ -73,7 +73,6 @@ const DashboardDoctor = () => {
       {/* Pestaña de Forms */}
       {activeTab === 'forms' && (
         <div id="forms-doctor" className="tab-content-doctor">
-          <h3>Formulario de Fisioterapia</h3>
           <FormularioFisioterapia /> {/* Muestra el nuevo formulario */}
         </div>
       )}

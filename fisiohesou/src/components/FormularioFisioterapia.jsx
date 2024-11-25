@@ -572,7 +572,6 @@ const FormularioFisioterapia = () => {
                         placeholder="Escriba aquí..."
                     ></textarea>
                     </div>
-
                 </div>
             </div>
         </div>

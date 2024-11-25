@@ -657,3 +657,23 @@ textarea::placeholder {
   color: #a9a9a9;
   opacity: 0.7;
 }
+
+.save-button {
+  background-color: #6a0dad; /* Color morado */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.save-button:hover {
+  background-color: #5a0ba5; /* Color morado más oscuro al pasar el mouse */
+}
+
+.save-button:active {
+  background-color: #6460AA; /* Color más oscuro cuando se presiona */
+}
