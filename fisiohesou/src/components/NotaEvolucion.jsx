@@ -35,7 +35,7 @@ const NotaEvolucion = () => {
                         Fecha :&nbsp;
                         <span className="date-input">
                             <input
-                                type="text"
+                                type="date"
                                 value={fecha}
                                 onChange={(e) => setFecha(e.target.value)}
                                 placeholder="fecha"
@@ -50,7 +50,7 @@ const NotaEvolucion = () => {
                         Hora :&nbsp;
                         <span className="time-input">
                             <input
-                                type="text"
+                                type="time"
                                 value={hora}
                                 onChange={(e) => setHora(e.target.value)}
                                 placeholder="hora"
