@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
-import './Login.css'; // Asegúrate de tener el archivo de estilos importado
+import React, { useState } from "react";
+import axios from "axios"; // Asegúrate de instalar axios: npm install axios
+import "./Login.css";
 
 const Login = ({ onLogin }) => {
-  const [isPaciente, setIsPaciente] = useState(true);
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
+ const [isPaciente, setIsPaciente] = useState(true); // Estado para el toggle de "Paciente"
+  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+  const [username, setUsername] = useState(""); // Estado para el nombre de usuario
+  const [password, setPassword] = useState(""); // Estado para la contraseña
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onLogin(isPaciente);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Evitar que el formulario recargue la página
+
+    try {
+      // Enviar las credenciales al backend
+      const response = await axios.post("http://localhost:5000/login", {
+        username,
+        password,
+       /* rol: isPaciente ? "paciente" : "doctor", // Enviar el rol seleccionado*/
+      });
+
+      // Validar la respuesta del servidor
+      if (response.data.success) {
+        const { rol } = response.data.user; // Extraer el rol del usuario
+        onLogin(rol); // Enviar el rol al componente padre
+      } else {
+        alert(response.data.message || "Credenciales incorrectas");
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      alert("Error al conectar con el servidor.");
+    }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-    // Mantener la visibilidad de la contraseña por 4 segundos
-    setTimeout(() => {
-      setShowPassword(false);
-    }, 4000);
+    setTimeout(() => setShowPassword(false), 4000); // Ocultar la contraseña después de 4 segundos
   };
 
   return (
@@ -27,6 +46,8 @@ const Login = ({ onLogin }) => {
           type="text"
           placeholder="Nombre de usuario"
           className="input-field"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)} // Actualizar el estado del usuario
           required
         />
         <div className="password-container">
@@ -34,6 +55,8 @@ const Login = ({ onLogin }) => {
             type={showPassword ? "text" : "password"}
             placeholder="Contraseña"
             className="input-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} // Actualizar el estado de la contraseña
             required
           />
           <span className="toggle-password-icon" onClick={togglePasswordVisibility}>

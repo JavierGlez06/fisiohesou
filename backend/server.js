@@ -51,12 +51,12 @@ db.connect((err) => {
 app.post("/register", (req, res) => {
   const { name, email, password, role } = req.body;
 
-  if (!name || !email || !password || !role) {
+  if (!name || !email || !password || !rol) {
     return res.status(400).json({ error: "Todos los campos son obligatorios." });
   }
 
   const query = "INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)";
-  db.query(query, [name, email, password, role], (err, result) => {
+  db.query(query, [name, email, password, rol], (err, result) => {
     if (err) {
       console.error("Error al insertar datos:", err.message);
       return res.status(500).json({ error: "Error al registrar al usuario." });
@@ -65,28 +65,19 @@ app.post("/register", (req, res) => {
   });
 });
 
-// Ruta para manejar el inicio de sesión
+// Ruta para validar el inicio de sesión
 app.post("/login", (req, res) => {
-  const { email, password } = req.body;
+  const { username, password, rol } = req.body;
+  const query = "SELECT * FROM usuarios WHERE username = ? AND password = ? AND rol = ?";
 
-  if (!email || !password) {
-    return res.status(400).json({ error: "Email y contraseña son obligatorios." });
-  }
-
-  const query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
-  db.query(query, [email, password], (err, results) => {
+  db.query(query, [username, password, rol], (err, results) => {
     if (err) {
-      console.error("Error al consultar la base de datos:", err.message);
-      return res.status(500).json({ error: "Error al consultar la base de datos." });
+      console.error("Error al consultar la base de datos:", err);
+      return res.status(500).json({ success: false, message: "Error en el servidor" });
     }
 
     if (results.length > 0) {
-      const user = results[0]; // Información del usuario
-      res.json({ 
-        success: true, 
-        message: "Inicio de sesión exitoso", 
-        user: { id: user.id, name: user.nombre, role: user.rol } 
-      });
+      res.status(200).json({ success: true, user: results[0] });
     } else {
       res.status(401).json({ success: false, message: "Credenciales incorrectas" });
     }
