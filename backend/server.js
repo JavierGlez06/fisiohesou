@@ -47,6 +47,43 @@ db.connect((err) => {
   }
 });
 
+// Ruta para registrar usuarios
+app.post("/register", (req, res) => {
+  const { name, email, password, role } = req.body;
+
+  if (!name || !email || !password || !rol) {
+    return res.status(400).json({ error: "Todos los campos son obligatorios." });
+  }
+
+  const query = "INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)";
+  db.query(query, [name, email, password, rol], (err, result) => {
+    if (err) {
+      console.error("Error al insertar datos:", err.message);
+      return res.status(500).json({ error: "Error al registrar al usuario." });
+    }
+    res.status(201).json({ message: "Usuario registrado exitosamente." });
+  });
+});
+
+// Ruta para validar el inicio de sesión
+app.post("/login", (req, res) => {
+  const { username, password, rol } = req.body;
+  const query = "SELECT * FROM usuarios WHERE username = ? AND password = ? AND rol = ?";
+
+  db.query(query, [username, password, rol], (err, results) => {
+    if (err) {
+      console.error("Error al consultar la base de datos:", err);
+      return res.status(500).json({ success: false, message: "Error en el servidor" });
+    }
+
+    if (results.length > 0) {
+      res.status(200).json({ success: true, user: results[0] });
+    } else {
+      res.status(401).json({ success: false, message: "Credenciales incorrectas" });
+    }
+  });
+});
+
 // Ruta para guardar una cita médica
 app.post('/guardar_cita', (req, res) => {
   const { fechaCita, horaCita, doctorAsignado, comentarios, pacienteNombre, pacienteId } = req.body;
