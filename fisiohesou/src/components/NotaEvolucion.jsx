@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import './NotaEvolucion.css';
 import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
@@ -11,6 +13,39 @@ const NotaEvolucion = () => {
     const [textoO, setTextoO] = useState(''); // Estado para la sección "O"
     const [textoA, setTextoA] = useState(''); // Estado para la sección A
     const [textoP, setTextoP] = useState(''); // Estado para la sección P
+
+    // Función que se ejecuta al guardar
+    const handleSave = () => {
+        const data = {
+            fecha,
+            hora,
+            nombreFisioterapeuta,
+            textoS,
+            textoO,
+            textoA,
+            textoP,
+        };
+        console.log('Datos guardados:', data);
+        alert('Datos guardados con éxito!');
+    };
+
+    // Función para generar el PDF
+    const handleGeneratePDF = () => {
+        const element = document.querySelector('.form-container'); // Seleccionar el contenedor principal
+        html2canvas(element).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png'); // Convertir a imagen
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            // Calcular las dimensiones para centrar la imagen en el PDF
+            const imgWidth = pageWidth;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('NotaEvolucion.pdf');
+        });
+    };
 
     return (
         <div className="form-container">
@@ -35,7 +70,7 @@ const NotaEvolucion = () => {
                         Fecha :&nbsp;
                         <span className="date-input">
                             <input
-                                type="text"
+                                type="date"
                                 value={fecha}
                                 onChange={(e) => setFecha(e.target.value)}
                                 placeholder="fecha"
@@ -50,7 +85,7 @@ const NotaEvolucion = () => {
                         Hora :&nbsp;
                         <span className="time-input">
                             <input
-                                type="text"
+                                type="time"
                                 value={hora}
                                 onChange={(e) => setHora(e.target.value)}
                                 placeholder="hora"
@@ -119,6 +154,13 @@ const NotaEvolucion = () => {
                         ></textarea>
                     </p>
                 </div>
+                {/* Botón de Guardar */}
+                <button className="save-button" onClick={handleSave}>
+                    Guardar
+                </button>
+                <button className="pdf-button" onClick={handleGeneratePDF}>
+                    Generar PDF
+                </button>
             </div>
         </div>
     );

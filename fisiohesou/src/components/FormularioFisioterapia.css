@@ -1,145 +1,681 @@
-/* Estilos generales */
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #f2f2f7;
-  color: #333;
+.document-details {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-/* Contenedor del formulario */
-.form-container {
-  width: 100%;
-  max-width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  max-height: 90vh;
-}
-
-/* Tabla */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-  background-color: white;
-}
-
-td {
-  padding: 12px;
-  vertical-align: middle;
-  font-size: 15px;
+.detail-left,
+.detail-right {
+  font-size: 14px;
   color: #333;
-  font-weight: 500;
 }
 
-td input, td textarea {
+.detail-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los elementos hacia la izquierda */
+}
+
+.input-detail {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px; /* Ancho por defecto */
+  color: #333; /* Asegura que el texto sea visible */
+  background-color: #fff; /* Fondo blanco para los campos de texto */
+}
+
+.input-detail[type="date"] {
+  width: 160px;
+  color: #333; /* Asegura que el texto del campo de fecha sea visible */
+  background-color: #fff; /* Fondo blanco para los campos de texto */
+}
+
+.input-detail::placeholder {
+  color: #a9a9a9; /* Cambia este color a uno más claro */
+  opacity: 0.7; /* Ajusta la opacidad para hacerlo más tenue */
+}
+
+
+/* Alineación para los campos Nombre, Fecha de nacimiento y Edad */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.info-cell {
+  display: flex;
+  flex-direction: row; /* Cambié la dirección a row */
+  align-items: center;
+  width: 32%; /* Ajusta el tamaño de cada celda para que se distribuyan */
+}
+
+.info-cell label {
+  font-size: 14px;
+  color: #333;
+  margin-right: 10px; /* Para separar el label del input */
+}
+
+/* Ajuste para los campos dentro de .info-cell */
+.info-cell .input-detail {
+  width: 100%; /* Asegura que los inputs ocupen el 100% de la celda */
+  color: #333; /* Asegura que el texto sea visible */
+  background-color: #fff; /* Fondo blanco */
+}
+
+/* Ajuste específico para el campo de Nombre */
+.info-cell .input-detail[placeholder="Nombre"] {
+  width: 100%; /* Asegura que el campo de Nombre ocupe todo el espacio de su celda */
+}
+
+/* Ajuste específico para el campo de Edad */
+.info-cell .input-detail[placeholder="Edad"] {
+  width: 70px; /* Ajusta el ancho del input de Edad */
+}
+
+/* Ajuste específico para los campos Sexo, Talla, Peso, IMC */
+.info-cell .input-detail[placeholder="Sexo"],
+.info-cell .input-detail[placeholder="Talla"],
+.info-cell .input-detail[placeholder="Peso"],
+.info-cell .input-detail[placeholder="IMC"] {
+  width: 80px; /* Ancho reducido para que los campos caben en una fila */
+}
+
+  /* Nueva fila para Localidad, C.P., Municipio y Estado */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.info-cell {
+  width: 23%;
+}
+
+/* Estilo específico para Signos Vitales */
+.signos-vitales-section h3 {
   font-size: 16px;
-  width: 100%;
-  height: 40px;
-  border: 1px solid #e0e0e0;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.info-row-signos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.info-cell-signos {
+  display: flex;
+  flex-direction: column; /* El título estará arriba del input */
+  align-items: center;
+  width: 18%; /* Ajusta el tamaño de cada celda para que quepan todos los campos */
+}
+
+.info-cell-signos label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo de texto */
+}
+
+/* Campos de entrada en la sección de Signos Vitales */
+.info-cell-signos .input-detail {
+  width: 80px; /* Ancho reducido */
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+}
+
+/* Estilo para la sección de Motivo de Consulta */
+.motivo-consulta {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.motivo-consulta label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-consulta {
+  width: 150%; /* Reduce el ancho del área de texto al 80% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo para evitar que se extienda demasiado */
+  height: 7rem; /* Altura suficiente para 7 líneas de texto */
   padding: 10px;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f2f2f7;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   color: #333;
-  transition: all 0.2s ease-in-out;
+  background-color: #fff; /* Fondo blanco para el área de texto */
+  resize: none; /* Evita que el usuario cambie el tamaño del área de texto */
 }
 
-/* Estilos de la sección de imagen de cuerpo humano */
-.seccion-cuerpo .figura {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%; /* Mantiene la proporción 1:1 */
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  overflow: hidden;
+/* Estilo para la sección de Padecimiento Actual */
+.padecimiento-actual {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
 }
 
-.imagen-cuerpo-logo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  z-index: 1;
+.padecimiento-actual label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
 }
 
-/* Áreas seleccionables en el cuerpo */
-.area {
-  position: absolute;
-  /* Eliminamos el fondo rojo */
-  background-color: transparent;
+.textarea-padecimiento {
+  width: 150%; /* Reduce el ancho del área de texto al 80% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo para evitar que se extienda demasiado */
+  height: 7rem; /* Altura suficiente para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco para el área de texto */
+  resize: none; /* Evita que el usuario cambie el tamaño del área de texto */
+}
+
+/* Estilo para la sección de Tratamiento Previo o Farmacológico */
+.tratamiento-previo {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.tratamiento-previo label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-tratamiento {
+  width: 150%; /* Reduce el ancho del área de texto al 80% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Contenedor para los textos de antecedentes */
+.antecedentes-container {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos a los extremos */
+  align-items: center; /* Alinea los textos verticalmente */
+  margin-top: 20px; /* Espacio superior */
+  width: 100%; /* Ocupa todo el ancho del contenedor padre */
+  color: #333; /* Color del texto */
+  font-size: 14px; /* Tamaño del texto */
+  font-weight: normal; /* Resalta los textos */
+}
+
+/* Estilo para el texto a la izquierda */
+.antecedentes-left {
+  text-align: left; /* Alinea a la izquierda */
+}
+
+/* Estilo para el texto a la derecha */
+.antecedentes-right {
+  text-align: right; /* Alinea a la derecha */
+}
+
+/* Contenedor de las preguntas */
+.preguntas-container {
+  display: flex;
+  justify-content: space-between; /* Distribuye las preguntas de manera uniforme */
+  align-items: center;
+  margin-top: 20px; /* Espacio superior */
+  width: 100%; /* Ocupa todo el ancho del contenedor padre */
+}
+
+/* Estilo para cada pregunta */
+.pregunta {
+  display: flex;
+  flex-direction: column; /* Alinea la pregunta verticalmente */
+  align-items: center; /* Centra las opciones */
+  width: 30%; /* Ajusta el ancho de cada bloque de pregunta */
+  font-size: 14px;
+  padding-right: 10px; /* Asegura que haya espacio entre la pregunta y la línea */
+}
+
+/* Estilo para la segunda pregunta (con la línea vertical) */
+.pregunta:nth-child(2) {
+  border-right: 2px solid #ccc; /* Línea vertical entre la segunda y tercera pregunta */
+  padding-right: 15px; /* Asegura que haya suficiente espacio entre el borde y las opciones */
+}
+
+
+.pregunta label {
+  font-weight: normal; /* Resalta las preguntas */
+  margin-bottom: 5px; /* Espacio entre la pregunta y las opciones */
+}
+
+/* Contenedor de las opciones "Sí" y "No" */
+.radio-options {
+  display: flex; /* Alinea las opciones en fila */
+  justify-content: space-around; /* Espacio entre las opciones */
+  align-items: center; /* Centra las opciones */
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.radio-options input {
+  margin: 0 5px; /* Espacio entre las opciones */
+  font-size: 14px;
+}
+
+.radio-options input[type="radio"] {
+  appearance: none; /* Oculta el radio button predeterminado */
+  width: 16px;
+  height: 16px;
+  border: 2px solid #6a0dad; /* Borde morado */
+  border-radius: 50%; /* Hace que el borde sea redondo */
+  outline: none;
   cursor: pointer;
+  position: relative;
 }
 
-.x-mark {
-  position: absolute;
-  top: -10px;
-  left: 12px;
-  color: red;
+.radio-options input[type="radio"]:checked {
+  background-color: #6a0dad; /* Color de fondo morado cuando está seleccionado */
+  border-color: #6a0dad; /* Asegura que el borde sea consistente */
+}
+
+
+textarea {
+  width: 100%; /* Hace que el textarea ocupe el ancho completo de su contenedor */
+  font-size: 14px; /* Ajusta el tamaño de la fuente en el textarea */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde de color gris */
+  padding: 5px; /* Espaciado interno */
+  resize: none; /* Desactiva el redimensionamiento del textarea */
+  background-color: #fff; /* Fondo blanco */
+  color: #333; /* Texto negro */
+}
+
+/* Estilo para la sección Inspección Local */
+.inspeccion-local {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.inspeccion-local h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+  font-weight: normal;
+}
+
+/* Estilo para la sección Exploración Física */
+.exploracion-fisica {
+  margin-top: 20px;
+  font-size: 16px;
   font-weight: bold;
-  font-size: 20px;
-  z-index: 2;
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-  .imagen-cuerpo-logo {
-    width: 100%;
-    height: auto;
-  }
-  
-  /* Ajustes de las áreas de la imagen */
-  .area {
-    /* Ajusta el tamaño de las áreas (de acuerdo a la imagen) */
-    width: 20px;
-    height: 20px;
-  }
-
-  /* Ajusta las posiciones de las áreas a medidas relativas (porcentaje) */
-  .area.cabeza {
-    top: 5%;
-    left: 45%;
-  }
-
-  .area.torso {
-    top: 30%;
-    left: 40%;
-  }
+.exploracion-fisica h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+  font-weight: normal;
 }
 
-@media (max-width: 480px) {
-  /* Ajustar el tamaño de las áreas para pantallas aún más pequeñas */
-  .area {
-    width: 15px;
-    height: 15px;
-  }
+/* Estilo para la sección de Observación */
+.observacion {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
 
-  .area.cabeza {
-    top: 10%;
-    left: 45%;
-  }
+.observacion label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
 
-  .area.torso {
-    top: 40%;
-    left: 40%;
-  }
+.textarea-observacion {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Palpación */
+.palpacion {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.palpacion label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-palpacion {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Examinación */
+.examinacion {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.examinacion label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-examinacion {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de ROM */
+.rom {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.rom label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-rom {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Fuerza */
+.fuerza {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.fuerza label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-fuerza {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 2rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Pruebas específicas */
+.pruebas-especificas {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.pruebas-especificas label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-pruebas-especificas {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo específico para Diagnóstico Funcional (CIF) */
+.diagnostico-funcional-section h3 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.info-row-diagnostico {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.info-cell-diagnostico {
+  display: flex;
+  flex-direction: column; /* El título estará arriba del input */
+  align-items: center;
+  width: 18%; /* Ajusta el tamaño de cada celda para que quepan todos los campos */
+}
+
+.info-cell-diagnostico label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo de texto */
+  text-align: center; /* Centra el texto del título */
+}
+
+/* Añadir espacio adicional solo a los primeros 4 títulos */
+.info-cell-diagnostico:nth-child(-n+4) label {
+  margin-bottom: 26px; /* Espacio adicional */
+}
+
+/* Campos de entrada en la sección de Diagnóstico Funcional (CIF) */
+.info-cell-diagnostico .input-detail {
+  width: 100%; /* Establece el ancho del input al 100% de la celda */
+  max-width: 80px; /* Limita el ancho máximo del input */
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  text-align: center; /* Centra el texto en los inputs */
+  height: 5rem; /* Aproximadamente 5 líneas de texto */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+/* Estilo para la sección de Corto */
+.corto {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.corto label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-corto {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Mediano */
+.mediano {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.mediano label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-mediano {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+/* Estilo para la sección de Largo plazo */
+.largo-plazo {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Coloca el título encima del campo */
+  align-items: flex-start; /* Alinea el título a la izquierda */
+  width: 100%; /* Asegura que esté alineado con el contenedor */
+}
+
+.largo-plazo label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre el título y el campo */
+}
+
+.textarea-largo-plazo {
+  width: 150%; /* Reduce el ancho del área de texto al 150% del contenedor */
+  max-width: 685px; /* Limita el ancho máximo */
+  height: 7rem; /* Altura para 7 líneas de texto */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff; /* Fondo blanco */
+  resize: none; /* Evita el redimensionamiento */
+}
+
+.textarea-consulta::placeholder,
+.textarea-padecimiento::placeholder,
+.textarea-tratamiento::placeholder {
+    color: #a9a9a9; /* Color más claro para el placeholder */
+    opacity: 0.7; /* Hace el texto más tenue */
+}
+
+textarea::placeholder {
+  color: #a9a9a9;
+  opacity: 0.7;
+}
+
+.save-button {
+  background-color: #6a0dad; /* Color morado */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.save-button:hover {
+  background-color: #5a0ba5; /* Color morado más oscuro al pasar el mouse */
+}
+
+.save-button:active {
+  background-color: #6460AA; /* Color más oscuro cuando se presiona */
 }
 
 

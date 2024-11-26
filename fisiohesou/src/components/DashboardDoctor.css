@@ -151,6 +151,7 @@ h3 {
 /* Asegurarse de que los botones sean accesibles */
 .tab-button:focus {
   outline: 3px solid var(--color-primary); /* Borde visible cuando el botón está enfocado */
+
 }
 
 /* Estilo para el contenedor de la pestaña de Nota de Evolución */
@@ -164,4 +165,17 @@ h3 {
 /* Estilo para el componente específico NotaEvolucion */
 .nota-evolucion {
   width: 100%; /* Asegura que el componente de Nota de Evolución ocupe todo el contenedor */
+}
+
+.tab-button {
+  background-color: #6460AA;
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab-button:hover {
+  background-color: #550a8a; /* Variación de morado en hover */
 }

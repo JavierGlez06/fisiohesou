@@ -54,7 +54,7 @@ const NotaReferencia = () => {
                             />
                             &nbsp;a&nbsp;
                             <input
-                                type="text"
+                                type="date"
                                 value={fecha}
                                 onChange={(e) => setFecha(e.target.value)}
                                 placeholder="Fecha"
@@ -65,7 +65,7 @@ const NotaReferencia = () => {
                 </div>
                 <div className="document-professional">
                     <p>
-                        Estimado/a&nbsp;
+                        Estimado/a: &nbsp;
                         <input
                             type="text"
                             value={nombreProfesional}
@@ -73,7 +73,6 @@ const NotaReferencia = () => {
                             placeholder="Nombre del Profesional"
                             className="input-professional"
                         />
-                        :
                     </p>
                 </div>
                 <div className="document-message">
@@ -88,7 +87,7 @@ const NotaReferencia = () => {
                         />
                         de&nbsp;
                         <input
-                            type="text"
+                            type="number"
                             value={edadPaciente}
                             onChange={(e) => setEdadPaciente(e.target.value)}
                             placeholder="(Edad)"
@@ -190,8 +189,15 @@ const NotaReferencia = () => {
                 </div>
                 {/* Nombre Completo */}
                 <div className="document-name">
-                    <p style={{ textAlign: 'center' }}>
-                        <strong>[Tu Nombre Completo]</strong>
+                <p style={{ textAlign: 'center' }}>
+                        Tu nombre completo&nbsp;
+                        <input
+                            type="text"
+                            value={nombreProfesional}
+                            onChange={(e) => setNombreProfesional(e.target.value)}
+                            placeholder="Nombre "
+                            className="input-message"
+                        />
                     </p>
                 </div>
                 {/* Cédula Profesional */}
