@@ -8,8 +8,13 @@ import './App.css';
 function App() {
   const [role, setRole] = useState('login'); // 'login', 'paciente', 'doctor'
 
-  const handleLogin = (isPaciente) => {
-    setRole(isPaciente ? 'paciente' : 'doctor');
+  const handleLogin = (rol) => {
+    // Dependiendo del rol, cambiar la vista
+    if (rol === "paciente") {
+      setRole("paciente");
+    } else if (rol === "doctor") {
+      setRole("doctor");
+    }
   };
 
   return (
