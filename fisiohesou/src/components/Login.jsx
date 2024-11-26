@@ -16,7 +16,7 @@ const Login = ({ onLogin }) => {
       const response = await axios.post("http://localhost:5000/login", {
         username,
         password,
-       /* rol: isPaciente ? "paciente" : "doctor", // Enviar el rol seleccionado*/
+        rol: isPaciente ? "paciente" : "doctor", // Enviar el rol seleccionado*/
       });
 
       // Validar la respuesta del servidor
