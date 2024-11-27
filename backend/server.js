@@ -23,7 +23,7 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(), // Logs en consola
     // Si deseas guardar los logs en un archivo, puedes agregar:
-    // new winston.transports.File({ filename: 'logs/server.log' })
+    new winston.transports.File({ filename: 'logs/server.log' })
   ],
 });
 
@@ -109,117 +109,6 @@ app.post('/guardar_cita', (req, res) => {
 
 // code new
 // Ruta para guardar los datos del formulario
-app.post('/guardar_historia_clinica', (req, res) => {
-  console.log(req.body);  // Verifica qué datos se están enviando
-
-  const {
-    nombre,
-    apellidoPaterno,
-    apellidoMaterno,
-    fechaNacimiento,
-    edad,
-    sexo,
-    talla,
-    peso,
-    imc,
-    estadoCivil,
-    ocupacion,
-    lugarNacimiento,
-    nacionalidad,
-    domicilio,
-    localidad,
-    cp,
-    municipio,
-    estado,
-    colonia,
-    telefonoCasa,
-    celular,
-    emergenciaNombre,
-    emergenciaCelular,
-    frecuenciaCardiaca,
-    sp02,
-    temperatura,
-    presionArterial,
-    frecuenciaRespiratoria,
-    motivoConsulta,
-    padecimientoActual,
-    tratamientoPrevio,
-    preguntasAntecedentes // Este es el campo que podría estar causando problemas
-  } = req.body;
-
-  // Sanitizar los datos: asignar NULL a los campos vacíos
-  const sanitizedData = {
-    nombre: nombre || null,
-    apellidoPaterno: apellidoPaterno || null,
-    apellidoMaterno: apellidoMaterno || null,
-    fechaNacimiento: fechaNacimiento || null,
-    edad: edad || null,
-    sexo: sexo || null,
-    talla: talla || null,
-    peso: peso || null,
-    imc: imc || null,
-    estadoCivil: estadoCivil || null,
-    ocupacion: ocupacion || null,
-    lugarNacimiento: lugarNacimiento || null,
-    nacionalidad: nacionalidad || null,
-    domicilio: domicilio || null,
-    localidad: localidad || null,
-    cp: cp || null,
-    municipio: municipio || null,
-    estado: estado || null,
-    colonia: colonia || null,
-    telefonoCasa: telefonoCasa || null,
-    celular: celular || null,
-    emergenciaNombre: emergenciaNombre || null,
-    emergenciaCelular: emergenciaCelular || null,
-    frecuenciaCardiaca: frecuenciaCardiaca || null,
-    sp02: sp02 || null,
-    temperatura: temperatura || null,
-    presionArterial: presionArterial || null,
-    frecuenciaRespiratoria: frecuenciaRespiratoria || null,
-    motivoConsulta: motivoConsulta || null,
-    padecimientoActual: padecimientoActual || null,
-    tratamientoPrevio: tratamientoPrevio || null,
-    preguntasAntecedentes: Object.keys(preguntasAntecedentes).length > 0
-      ? JSON.stringify(preguntasAntecedentes)
-      : null, // Solo enviar JSON si tiene datos
-  };
-
-  console.log(sanitizedData); // Para ver los valores que se están enviando
-
-
-  // Verifica que la cantidad de valores coincida con las columnas
-  const query = `
-    INSERT INTO pacientes (
-      nombre, apellido_paterno, apellido_materno, fecha_nacimiento, edad, sexo, talla, peso, imc,
-      estado_civil, ocupacion, lugar_nacimiento, nacionalidad, domicilio, localidad, cp, municipio, 
-      estado, colonia, telefono_casa, celular, emergencia_nombre, emergencia_celular, 
-      frecuencia_cardiaca, sp02, temperatura, presion_arterial, frecuencia_respiratoria,
-      motivo_consulta, padecimiento_actual, tratamiento_previo, preguntas_antecedentes
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `;
-
-  const values = [
-    sanitizedData.nombre, sanitizedData.apellidoPaterno, sanitizedData.apellidoMaterno, sanitizedData.fechaNacimiento, sanitizedData.edad,
-    sanitizedData.sexo, sanitizedData.talla, sanitizedData.peso, sanitizedData.imc, sanitizedData.estadoCivil, sanitizedData.ocupacion,
-    sanitizedData.lugarNacimiento, sanitizedData.nacionalidad, sanitizedData.domicilio, sanitizedData.localidad, sanitizedData.cp,
-    sanitizedData.municipio, sanitizedData.estado, sanitizedData.colonia, sanitizedData.telefonoCasa, sanitizedData.celular,
-    sanitizedData.emergenciaNombre, sanitizedData.emergenciaCelular, sanitizedData.frecuenciaCardiaca, sanitizedData.sp02, sanitizedData.temperatura,
-    sanitizedData.presionArterial, sanitizedData.frecuenciaRespiratoria, sanitizedData.motivoConsulta, sanitizedData.padecimientoActual,
-    sanitizedData.tratamientoPrevio, sanitizedData.preguntasAntecedentes
-  ];
-
-  // Ejecutar la consulta
-  db.query(query, values, (err, result) => {
-    if (err) {
-      console.error('Error al guardar los datos:', err);
-      return res.status(500).json({ message: 'Error al guardar los datos' });
-    }
-
-    return res.status(200).json({ message: 'Historia clínica guardada con éxito', pacienteId: result.insertId });
-  });
-});
-
 
 
 // fin del code new
