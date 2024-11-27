@@ -2,6 +2,8 @@ import React from 'react';
 import './FormularioFisioterapia.css';
 import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
+import figura from "../assets/figura.png"
+import ClickableImage from "./ClickableImage";
 
 const FormularioFisioterapia = () => {
     
@@ -460,7 +462,7 @@ const FormularioFisioterapia = () => {
                 {/* Sección de Inspección Local */}
                 <div className="inspeccion-local">
                     <h3>Inspección Local</h3>
-                    {/* Aquí puedes agregar los campos más tarde */}
+                    <ClickableImage imageSrc={figura} />
                 </div>
                 {/* Sección de Exploración Física */}
                 <div className="exploracion-fisica">

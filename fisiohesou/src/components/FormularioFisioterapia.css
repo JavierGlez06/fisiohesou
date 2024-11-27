@@ -313,11 +313,15 @@ textarea {
   color: #333; /* Texto negro */
 }
 
-/* Estilo para la sección Inspección Local */
 .inspeccion-local {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: normal;
+  max-width: 100%; /* Ancho máximo */
+  margin: 0 auto; /* Centrado horizontal */
+  overflow: visible; /* Evita que el contenido se recorte */
+}
+
+.inspeccion-local img {
+  width: 100%; /* Ajusta la imagen al ancho del contenedor */
+  height: auto; /* Mantiene la proporción */
 }
 
 .inspeccion-local h3 {
