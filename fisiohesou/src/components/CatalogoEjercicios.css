@@ -1,0 +1,189 @@
+/* Estilos generales */
+.catalogo {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #444;
+}
+
+/* Inputs y botones */
+input[type="text"] {
+  background-color: #b4b9fd63; /* Color de fondo */
+  padding: 10px;
+  width: 80%;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #000; /* Color del texto */
+}
+
+button {
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5a2858;
+}
+
+/* Rutina */
+.rutina {
+  margin-top: 30px;
+}
+
+.rutina div {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.rutina ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.rutina li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.rutina input[type="text"] {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.rutina button {
+  margin-left: 10px;
+  background-color: #000000;
+}
+.rutina button:hover
+{
+  background-color: #5a2858;
+}
+.Elimiar-Eje
+{
+  margin-left: 10px;
+  background-color: #ad2d24;
+}
+
+.limpiar-btn {
+  background-color: #f44336;
+}
+
+.limpiar-btn:hover {
+  background-color: #e53935;
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.catalogo-ejercicios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.ejercicio-item {
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.ejercicio-item:hover {
+  background-color: #ddd;
+  transform: scale(1.05);
+}
+
+.ejercicio-item.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.ejercicio-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Mejoras en la presentación de la tabla en PDF */
+.pdf-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pdf-texto {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.agregar-dia {
+  margin-left: 5px; /* Separación superior */
+  padding: 10px 20px; /* Relleno dentro del botón */
+  background-color: #000000; /* Fondo verde */
+  color: white; /* Texto blanco */
+  border: 2px solid #ffffff; /* Borde verde de 2px */
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+}

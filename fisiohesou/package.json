@@ -15,10 +15,13 @@
     "@mui/material": "^6.1.4",
     "date-fns": "^4.1.0",
     "fisiohesou": "file:",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "react": "^18.3.1",
     "react-datepicker": "^7.4.0",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
