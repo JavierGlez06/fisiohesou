@@ -8,9 +8,10 @@ import FormularioFisioterapia from './FormularioFisioterapia'; // Importa el nue
 import NotaEvolucion from './NotaEvolucion';
 import NotaReferencia from './NotaReferencia';
 import VistaExp from './VistaExp'; // Importa el nuevo componente VistaExp
+import CatalogoEjercicios from './CatalogoEjercicios'; // Importa el componente
 
 registerLocale('es', es); // Registrar el idioma español para el calendario
-
+             
 const DashboardDoctor = () => {
   const [activeTab, setActiveTab] = useState('consultas');
   const [startDate, setStartDate] = useState(new Date());
@@ -48,11 +49,12 @@ const DashboardDoctor = () => {
           <button className="tab-button" onClick={() => openTab('notaEvolucion')}>Nota de Evolución</button>
           <button className="tab-button" onClick={() => openTab('notaReferencia')}>Nota de referencia</button>
           <button className="tab-button" onClick={() => openTab('vista')}>Vista</button> {/* Nuevo botón "Vista" */}
+          <button className="tab-button" onClick={() => openTab('catalogo')}>Catálogo de Ejercicios</button> {/* Nuevo botón "Vista" */}
         </nav>
       </header>
 
       {/* Mostrar calendario si no está en las pestañas 'expedientes' o 'forms' */}
-      {activeTab !== 'forms' && activeTab !== 'notaEvolucion' && activeTab !== 'notaReferencia' && activeTab !== 'vista' && (
+      {activeTab !== 'forms' && activeTab !== 'notaEvolucion' && activeTab !== 'notaReferencia' && activeTab !== 'vista' && activeTab!== 'catalogo' && (
         <div className="calendar-container">
           <h3>Calendario de Consultas</h3>
           <DatePicker
@@ -100,6 +102,13 @@ const DashboardDoctor = () => {
         <div id="vista-doctor" className="tab-content-doctor">
           <h3>Vista Exp</h3>
           <VistaExp /> {/* Componente VistaExp */}
+        </div>
+      )}
+
+      {/* Nueva pestaña: Catálogo de Ejercicios */}
+      {activeTab === 'catalogo' && (
+        <div id="catalogo" className="tab-content-doctor">
+          <CatalogoEjercicios onSave={(rutina) => console.log('Rutina guardada:', rutina)} />
         </div>
       )}
     </div>
