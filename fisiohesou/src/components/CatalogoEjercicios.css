@@ -120,7 +120,19 @@
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
-  }
+    max-height: 80vh; /* Altura máxima relativa a la ventana */
+    overflow-y: auto; /* Habilita la barra de desplazamiento vertical */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Opcional: sombra para un mejor diseño */
+}
+
+.imagenes-modal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Espaciado entre imágenes */
+}
+
+
   
   .catalogo-ejercicios {
     display: flex;
@@ -188,3 +200,47 @@
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
   }
+  .modal .catalogo-ejercicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espaciado entre elementos */
+}
+
+.modal .ejercicio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px; /* Ajusta el tamaño según sea necesario */
+    height: 150px; /* Ajusta la altura según sea necesario */
+    border: 1px solid #ddd; /* Opcional: borde alrededor del elemento */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno */
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animación de hover */
+}
+
+.modal .ejercicio-item.selected {
+    border: 2px solid #4CAF50; /* Destaca los seleccionados */
+    background-color: #f0f8ff; /* Fondo para seleccionados */
+}
+
+.modal .ejercicio-item:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+.modal .ejercicio-imagen {
+    width: 100%;
+    height: 80px; /* Ajusta la altura */
+    object-fit: cover; /* Garantiza que las imágenes no se deformen */
+    border-radius: 4px; /* Opcional: redondear esquinas */
+}
+
+.modal .ejercicio-item p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
