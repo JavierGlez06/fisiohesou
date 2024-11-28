@@ -7,6 +7,9 @@ import "./CatalogoEjercicios.css";
 const ejerciciosDisponibles = [
     { id: 1, nombre: "Plancha Lateral", imagen: "./Plancha_lateral.jpg" },
     { id: 2, nombre: "Puentes", imagen: "./Puentes.jpg" },
+    { id: 3, nombre: "Estiramiento", imagen: "./1.jpg" },
+    { id: 4, nombre: "Movilidad Lumbral", imagen: "./movilidad_lumbral.jpg" },
+    { id: 5, nombre: "Trote", imagen: "./Trote.jpg" },
 ];
 
 const CatalogoEjercicios = () => {
