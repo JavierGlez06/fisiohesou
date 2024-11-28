@@ -23,7 +23,7 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(), // Logs en consola
     // Si deseas guardar los logs en un archivo, puedes agregar:
-    new winston.transports.File({ filename: 'logs/server.log' })
+    //new winston.transports.File({ filename: 'logs/server.log' })
   ],
 });
 
@@ -110,6 +110,7 @@ app.post('/guardar_cita', (req, res) => {
 // code new
 // Ruta para guardar los datos del formulario
 // Ruta para guardar los datos del formulario de fisioterapia
+// Ruta para guardar los datos del formulario de fisioterapia
 app.post('/submit-form', (req, res) => {
   const {
     sp02,
@@ -152,10 +153,24 @@ app.post('/submit-form', (req, res) => {
     objetivoLargo
   } = req.body;
 
-  // Verificar que los datos necesarios estén presentes (validación mínima)
-  if (!motivoConsulta || !padecimientoActual) {
-    return res.status(400).json({ error: 'El motivo de consulta y el padecimiento actual son obligatorios.' });
-  }
+  // Transformar valores booleanos a 'YES' o 'NO' para las columnas correspondientes
+  const formDataTransformed = {
+    ...req.body,
+    diabetes: diabetes ? 'YES' : 'NO',
+    reumaticas: reumaticas ? 'YES' : 'NO',
+    tabaco: tabaco ? 'YES' : 'NO',
+    ha: ha ? 'YES' : 'NO',
+    accidentes: accidentes ? 'YES' : 'NO',
+    alcohol: alcohol ? 'YES' : 'NO',
+    cancer: cancer ? 'YES' : 'NO',
+    fracturas: fracturas ? 'YES' : 'NO',
+    drogas: drogas ? 'YES' : 'NO',
+    alergias: alergias ? 'YES' : 'NO',
+    quirurgicos: quirurgicos ? 'YES' : 'NO',
+    cardiovasculares: cardiovasculares ? 'YES' : 'NO',
+    actividadFisica: actividadFisica ? 'YES' : 'NO',
+    psiquiatricos: psiquiatricos ? 'YES' : 'NO'
+  };
 
   // Consulta SQL para insertar los datos del formulario en la tabla 'datos_fisioterapia'
   const query = `
@@ -170,21 +185,26 @@ app.post('/submit-form', (req, res) => {
 
   // Los valores del formulario se pasan como un arreglo para evitar la inyección SQL
   const values = [
-    sp02, temperatura, presionArterial, frecuenciaResp, motivoConsulta, padecimientoActual,
-    tratamientoPrevio, diabetes, reumaticas, tabaco, ha, accidentes, alcohol, cancer, fracturas,
-    drogas, alergias, quirurgicos, sueno, otros, cardiovasculares, actividadFisica, psiquiatricos,
-    pasatiempo, observacion, palpacion, examinacion, rom, fuerza, pruebasEspecificas, estructuraCorporal,
-    funcionCorporal, actividad, participacion, barrerasFacilitadores, objetivoCorto, objetivoMediano, objetivoLargo
+    formDataTransformed.sp02, formDataTransformed.temperatura, formDataTransformed.presionArterial,
+    formDataTransformed.frecuenciaResp, formDataTransformed.motivoConsulta, formDataTransformed.padecimientoActual,
+    formDataTransformed.tratamientoPrevio, formDataTransformed.diabetes, formDataTransformed.reumaticas,
+    formDataTransformed.tabaco, formDataTransformed.ha, formDataTransformed.accidentes, formDataTransformed.alcohol,
+    formDataTransformed.cancer, formDataTransformed.fracturas, formDataTransformed.drogas, formDataTransformed.alergias,
+    formDataTransformed.quirurgicos, formDataTransformed.sueno, formDataTransformed.otros, formDataTransformed.cardiovasculares,
+    formDataTransformed.actividadFisica, formDataTransformed.psiquiatricos, formDataTransformed.pasatiempo,
+    formDataTransformed.observacion, formDataTransformed.palpacion, formDataTransformed.examinacion, formDataTransformed.rom,
+    formDataTransformed.fuerza, formDataTransformed.pruebasEspecificas, formDataTransformed.estructuraCorporal,
+    formDataTransformed.funcionCorporal, formDataTransformed.actividad, formDataTransformed.participacion,
+    formDataTransformed.barrerasFacilitadores, formDataTransformed.objetivoCorto, formDataTransformed.objetivoMediano,
+    formDataTransformed.objetivoLargo
   ];
 
-  // Ejecutar la consulta SQL
   db.query(query, values, (err, result) => {
     if (err) {
       logger.error('Error al guardar los datos del formulario:', err.message);
       return res.status(500).json({ error: 'Error al guardar los datos en la base de datos.' });
     }
 
-    // Si la inserción fue exitosa, responder con un mensaje de éxito
     logger.info('Datos de fisioterapia guardados con éxito', { formularioId: result.insertId });
     return res.status(200).json({ message: 'Formulario guardado exitosamente', formularioId: result.insertId });
   });
