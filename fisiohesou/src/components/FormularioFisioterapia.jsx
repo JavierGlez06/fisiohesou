@@ -4,71 +4,139 @@ import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
 import figura from "../assets/figura.png"
 import ClickableImage from "./ClickableImage";
-
+import axios from 'axios';
 
 const FormularioFisioterapia = () => {
     const [formData, setFormData] = useState({
-      sp02: "",
-      temperatura: "",
-      presionArterial: "",
-      frecuenciaResp: "",
-      motivoConsulta: "",
-      padecimientoActual: "",
-      tratamientoPrevio: "",
-      diabetes: "",
-      reumaticas: "",
-      tabaco: "",
-      ha: "",
-      accidentes: "",
-      alcohol: "",
-      cancer: "",
-      fracturas: "",
-      drogas: "",
-      alergias: "",
-      quirurgicos: "",
-      sueno: "",
-      otros: "",
-      cardiovasculares: "",
-      actividadFisica: "",
-      psiquiatricos: "",
-      pasatiempo: "",
-      observacion: "",
-      palpacion: "",
-      examinacion: "",
-      rom: "",
-      fuerza: "",
-      pruebasEspecificas: "",
-      estructuraCorporal: "",
-      funcionCorporal: "",
-      actividad: "",
-      participacion: "",
-      barrerasFacilitadores: "",
-      objetivoCorto: "",
-      objetivoMediano: "",
-      objetivoLargo: "",
+      sp02: '',
+      temperatura: '',
+      presionArterial: '',
+      frecuenciaResp: '',
+      motivoConsulta: '',
+      padecimientoActual: '',
+      tratamientoPrevio: '',
+      diabetes: false,
+      reumaticas: false,
+      tabaco: false,
+      ha: false,
+      accidentes: false,
+      alcohol: false,
+      cancer: false,
+      fracturas: false,
+      drogas: false,
+      alergias: false,
+      quirurgicos: false,
+      sueno: '',
+      otros: '',
+      cardiovasculares: false,
+      actividadFisica: false,
+      psiquiatricos: false,
+      pasatiempo: '',
+      observacion: '',
+      palpacion: '',
+      examinacion: '',
+      rom: '',
+      fuerza: '',
+      pruebasEspecificas: '',
+      estructuraCorporal: '',
+      funcionCorporal: '',
+      actividad: '',
+      participacion: '',
+      barrerasFacilitadores: '',
+      objetivoCorto: '',
+      objetivoMediano: '',
+      objetivoLargo: ''
     });
   
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+  
+    const handleChange = (e) => {
+      const { name, value, type, checked } = e.target;
       setFormData({
         ...formData,
-        [name]: value,
+        [name]: type === 'checkbox' ? checked : value
       });
     };
-
-    
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
+      // Validación mínima
+      if (!formData.motivoConsulta || !formData.padecimientoActual) {
+        setError('El motivo de consulta y el padecimiento actual son obligatorios.');
+        return;
+      }
+  
+      // Convertir valores booleanos a 'YES'/'NO'
+      const formDataTransformed = {
+        ...formData,
+        diabetes: formData.diabetes ? 'YES' : 'NO',
+        reumaticas: formData.reumaticas ? 'YES' : 'NO',
+        tabaco: formData.tabaco ? 'YES' : 'NO',
+        ha: formData.ha ? 'YES' : 'NO',
+        accidentes: formData.accidentes ? 'YES' : 'NO',
+        alcohol: formData.alcohol ? 'YES' : 'NO',
+        cancer: formData.cancer ? 'YES' : 'NO',
+        fracturas: formData.fracturas ? 'YES' : 'NO',
+        drogas: formData.drogas ? 'YES' : 'NO',
+        alergias: formData.alergias ? 'YES' : 'NO',
+        quirurgicos: formData.quirurgicos ? 'YES' : 'NO',
+        cardiovasculares: formData.cardiovasculares ? 'YES' : 'NO',
+        actividadFisica: formData.actividadFisica ? 'YES' : 'NO',
+        psiquiatricos: formData.psiquiatricos ? 'YES' : 'NO'
+      };
+  
       try {
-        const response = await axios.post("http://localhost:5000/submit-form", formData);
-        console.log(response.data);
-        alert("Formulario enviado con éxito");
+        const response = await axios.post('http://localhost:5000/submit-form', formDataTransformed);
+        setSuccessMessage('Formulario enviado con éxito.');
+        setError('');
+        setFormData({
+          sp02: '',
+          temperatura: '',
+          presionArterial: '',
+          frecuenciaResp: '',
+          motivoConsulta: '',
+          padecimientoActual: '',
+          tratamientoPrevio: '',
+          diabetes: false,
+          reumaticas: false,
+          tabaco: false,
+          ha: false,
+          accidentes: false,
+          alcohol: false,
+          cancer: false,
+          fracturas: false,
+          drogas: false,
+          alergias: false,
+          quirurgicos: false,
+          sueno: '',
+          otros: '',
+          cardiovasculares: false,
+          actividadFisica: false,
+          psiquiatricos: false,
+          pasatiempo: '',
+          observacion: '',
+          palpacion: '',
+          examinacion: '',
+          rom: '',
+          fuerza: '',
+          pruebasEspecificas: '',
+          estructuraCorporal: '',
+          funcionCorporal: '',
+          actividad: '',
+          participacion: '',
+          barrerasFacilitadores: '',
+          objetivoCorto: '',
+          objetivoMediano: '',
+          objetivoLargo: ''
+        });
       } catch (error) {
-        console.error("Error al enviar el formulario:", error);
-        alert("Hubo un error al enviar el formulario.");
+        setError('Hubo un error al enviar el formulario.');
+        setSuccessMessage('');
       }
     };
+  
 
     const clickableImageRef = useRef();
 
