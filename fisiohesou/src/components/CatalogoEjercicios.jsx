@@ -9,12 +9,11 @@ const ejerciciosDisponibles = [
     { id: 2, nombre: "Puentes", imagen: "./Puentes.jpg" },
     { id: 3, nombre: "Estiramiento", imagen: "./1.jpg" },
     { id: 4, nombre: "Movilidad Lumbral", imagen: "./movilidad_lumbral.jpg" },
-    { id: 5, nombre: "Trote", imagen: "./3.jpg" },
+    { id: 5, nombre: "Cuerda", imagen: "./3.jpg" },
     { id: 6, nombre: "Barrras", imagen: "./4.jpg" },
     { id: 7, nombre: "Pelota", imagen: "./5.jpg" },
-    { id: 8, nombre: "Trote", imagen: "./6.jpg" },
+    { id: 8, nombre: "Estirar", imagen: "./6.jpg" },
     { id: 8, nombre: "Desplantes", imagen: "./8.jpg" },
-    
     
 ];
 
@@ -149,24 +148,44 @@ const CatalogoEjercicios = () => {
     const exportarPDF = async () => {
         try {
             const doc = new jsPDF();
-            doc.text(`Rutina de Ejercicios - ${nombrePaciente || "Sin Nombre"}`, 10, 10);
-
-            let yPosition = 20;
-
+            const pageHeight = doc.internal.pageSize.height; // Altura de la página en el PDF
+            let yPosition = 20; // Posición inicial para imprimir texto
+    
+            doc.text(`Rutina de Ejercicios - ${nombrePaciente || "Sin Nombre"}`, 10, yPosition);
+            yPosition += 10;
+    
             for (const dia of rutina) {
-                // Cambié esta línea para eliminar el número antes del Día
+                // Si la posición excede la altura de la página, añade una nueva hoja
+                if (yPosition + 10 > pageHeight) {
+                    doc.addPage();
+                    yPosition = 10; // Reinicia la posición para la nueva página
+                }
+    
                 doc.text(`Día: ${dia.dia}`, 10, yPosition);
                 yPosition += 10;
-
+    
                 for (const ejercicio of dia.ejercicios) {
+                    // Si la posición excede la altura de la página, añade una nueva hoja
+                    if (yPosition + 10 > pageHeight) {
+                        doc.addPage();
+                        yPosition = 10;
+                    }
+    
                     const textoEjercicio = `- ${ejercicio.nombre}: ${ejercicio.descripcion || "Sin descripción"}`;
                     doc.text(textoEjercicio, 20, yPosition);
                     yPosition += 10;
-
+    
                     if (ejercicio.imagen) {
                         try {
                             const base64Img = await convertirImagenABase64(ejercicio.imagen);
-                            const imgHeight = 30;
+                            const imgHeight = 30; // Altura de la imagen en el PDF
+    
+                            // Si la posición con la imagen excede la página, añade una nueva hoja
+                            if (yPosition + imgHeight > pageHeight) {
+                                doc.addPage();
+                                yPosition = 10;
+                            }
+    
                             doc.addImage(base64Img, "JPEG", 20, yPosition, 30, imgHeight);
                             yPosition += imgHeight + 5;
                         } catch (error) {
@@ -174,9 +193,10 @@ const CatalogoEjercicios = () => {
                         }
                     }
                 }
+    
                 yPosition += 10;
             }
-
+    
             doc.save("Rutina_Ejercicios.pdf");
         } catch (error) {
             console.error("Error al generar el PDF:", error);
@@ -232,7 +252,7 @@ const CatalogoEjercicios = () => {
 
             <button onClick={limpiarTodo} className="limpiar-btn">Limpiar Todo</button>
 
-            <button onClick={exportarPDF}>Exportar PDF</button>
+            <button className = 'exportar-pdf'onClick={exportarPDF}>Exportar PDF</button>
 
             {/* Modal de Ejercicios */}
             <div className={`modal-overlay ${modalVisible ? "show" : ""}`}>

@@ -244,3 +244,15 @@
     font-weight: 500;
     color: #333;
 }
+
+.exportar-pdf
+{
+  margin-left: 5px; /* Separación superior */
+    padding: 10px 20px; /* Relleno dentro del botón */
+    background-color: #6460AA; /* Fondo verde */
+    color: white; /* Texto blanco */
+    border: 2px solid #ffffff; /* Borde verde de 2px */
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+}
