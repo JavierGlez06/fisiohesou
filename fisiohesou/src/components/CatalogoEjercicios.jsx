@@ -9,7 +9,13 @@ const ejerciciosDisponibles = [
     { id: 2, nombre: "Puentes", imagen: "./Puentes.jpg" },
     { id: 3, nombre: "Estiramiento", imagen: "./1.jpg" },
     { id: 4, nombre: "Movilidad Lumbral", imagen: "./movilidad_lumbral.jpg" },
-    { id: 5, nombre: "Trote", imagen: "./Trote.jpg" },
+    { id: 5, nombre: "Trote", imagen: "./3.jpg" },
+    { id: 6, nombre: "Barrras", imagen: "./4.jpg" },
+    { id: 7, nombre: "Pelota", imagen: "./5.jpg" },
+    { id: 8, nombre: "Trote", imagen: "./6.jpg" },
+    { id: 8, nombre: "Desplantes", imagen: "./8.jpg" },
+    
+    
 ];
 
 const CatalogoEjercicios = () => {
