@@ -1,11 +1,74 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from 'react'; // Importar React solo una vez, con ambos hooks
 import './FormularioFisioterapia.css';
 import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
 import figura from "../assets/figura.png"
 import ClickableImage from "./ClickableImage";
 
+
 const FormularioFisioterapia = () => {
+    const [formData, setFormData] = useState({
+      sp02: "",
+      temperatura: "",
+      presionArterial: "",
+      frecuenciaResp: "",
+      motivoConsulta: "",
+      padecimientoActual: "",
+      tratamientoPrevio: "",
+      diabetes: "",
+      reumaticas: "",
+      tabaco: "",
+      ha: "",
+      accidentes: "",
+      alcohol: "",
+      cancer: "",
+      fracturas: "",
+      drogas: "",
+      alergias: "",
+      quirurgicos: "",
+      sueno: "",
+      otros: "",
+      cardiovasculares: "",
+      actividadFisica: "",
+      psiquiatricos: "",
+      pasatiempo: "",
+      observacion: "",
+      palpacion: "",
+      examinacion: "",
+      rom: "",
+      fuerza: "",
+      pruebasEspecificas: "",
+      estructuraCorporal: "",
+      funcionCorporal: "",
+      actividad: "",
+      participacion: "",
+      barrerasFacilitadores: "",
+      objetivoCorto: "",
+      objetivoMediano: "",
+      objetivoLargo: "",
+    });
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    };
+
+    
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post("http://localhost:5000/submit-form", formData);
+        console.log(response.data);
+        alert("Formulario enviado con éxito");
+      } catch (error) {
+        console.error("Error al enviar el formulario:", error);
+        alert("Hubo un error al enviar el formulario.");
+      }
+    };
 
     const clickableImageRef = useRef();
 
@@ -584,6 +647,9 @@ const FormularioFisioterapia = () => {
                         placeholder="Escriba aquí..."
                     ></textarea>
                     </div>
+                    <div className="save-button-container">
+                    <button type="submit" className="save-button">Guardar</button>
+                </div>
                 </div>
             </div>
         </div>

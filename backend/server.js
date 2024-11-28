@@ -109,6 +109,86 @@ app.post('/guardar_cita', (req, res) => {
 
 // code new
 // Ruta para guardar los datos del formulario
+// Ruta para guardar los datos del formulario de fisioterapia
+app.post('/submit-form', (req, res) => {
+  const {
+    sp02,
+    temperatura,
+    presionArterial,
+    frecuenciaResp,
+    motivoConsulta,
+    padecimientoActual,
+    tratamientoPrevio,
+    diabetes,
+    reumaticas,
+    tabaco,
+    ha,
+    accidentes,
+    alcohol,
+    cancer,
+    fracturas,
+    drogas,
+    alergias,
+    quirurgicos,
+    sueno,
+    otros,
+    cardiovasculares,
+    actividadFisica,
+    psiquiatricos,
+    pasatiempo,
+    observacion,
+    palpacion,
+    examinacion,
+    rom,
+    fuerza,
+    pruebasEspecificas,
+    estructuraCorporal,
+    funcionCorporal,
+    actividad,
+    participacion,
+    barrerasFacilitadores,
+    objetivoCorto,
+    objetivoMediano,
+    objetivoLargo
+  } = req.body;
+
+  // Verificar que los datos necesarios estén presentes (validación mínima)
+  if (!motivoConsulta || !padecimientoActual) {
+    return res.status(400).json({ error: 'El motivo de consulta y el padecimiento actual son obligatorios.' });
+  }
+
+  // Consulta SQL para insertar los datos del formulario en la tabla 'datos_fisioterapia'
+  const query = `
+    INSERT INTO datos_fisioterapia (
+      sp02, temperatura, presion_arterial, frecuencia_resp, motivo_consulta, padecimiento_actual,
+      tratamiento_previo, diabetes, reumaticas, tabaco, ha, accidentes, alcohol, cancer, fracturas,
+      drogas, alergias, quirurgicos, sueno, otros, cardiovasculares, actividad_fisica, psiquiatricos,
+      pasatiempo, observacion, palpacion, examinacion, rom, fuerza, pruebas_especificas, estructura_corporal,
+      funcion_corporal, actividad, participacion, barreras_facilitadores, objetivo_corto, objetivo_mediano, objetivo_largo
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  // Los valores del formulario se pasan como un arreglo para evitar la inyección SQL
+  const values = [
+    sp02, temperatura, presionArterial, frecuenciaResp, motivoConsulta, padecimientoActual,
+    tratamientoPrevio, diabetes, reumaticas, tabaco, ha, accidentes, alcohol, cancer, fracturas,
+    drogas, alergias, quirurgicos, sueno, otros, cardiovasculares, actividadFisica, psiquiatricos,
+    pasatiempo, observacion, palpacion, examinacion, rom, fuerza, pruebasEspecificas, estructuraCorporal,
+    funcionCorporal, actividad, participacion, barrerasFacilitadores, objetivoCorto, objetivoMediano, objetivoLargo
+  ];
+
+  // Ejecutar la consulta SQL
+  db.query(query, values, (err, result) => {
+    if (err) {
+      logger.error('Error al guardar los datos del formulario:', err.message);
+      return res.status(500).json({ error: 'Error al guardar los datos en la base de datos.' });
+    }
+
+    // Si la inserción fue exitosa, responder con un mensaje de éxito
+    logger.info('Datos de fisioterapia guardados con éxito', { formularioId: result.insertId });
+    return res.status(200).json({ message: 'Formulario guardado exitosamente', formularioId: result.insertId });
+  });
+});
 
 
 // fin del code new
