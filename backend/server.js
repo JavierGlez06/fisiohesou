@@ -23,7 +23,7 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(), // Logs en consola
     // Si deseas guardar los logs en un archivo, puedes agregar:
-    new winston.transports.File({ filename: 'logs/server.log' })
+    //new winston.transports.File({ filename: 'logs/server.log' })
   ],
 });
 

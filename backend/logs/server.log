@@ -1,0 +1,4 @@
+[32minfo[39m: Servidor corriendo en http://localhost:5000
+[32minfo[39m: Conexión exitosa a la base de datos MySQL
+[32minfo[39m: ::1 - - [28/Nov/2024:14:58:19 +0000] "POST /login HTTP/1.1" 200 85 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0"
+[32minfo[39m: ::1 - - [28/Nov/2024:14:59:15 +0000] "POST /login HTTP/1.1" 200 85 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
