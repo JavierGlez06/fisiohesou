@@ -38,6 +38,12 @@ const DashboardDoctor = () => {
     setMenuOpen(!menuOpen); // Alterna el estado del menú
   };
 
+  const handleLogout = () => {
+    // Aquí va la lógica para cerrar sesión.
+    window.location.href = '/login'; // Redirige al login
+   
+  };
+
   return (
     <div className="dashboard-container container">
       <header>
@@ -53,6 +59,7 @@ const DashboardDoctor = () => {
           <button className="tab-button" onClick={() => openTab('notaReferencia')}>Nota de Referencia</button>
           <button className="tab-button" onClick={() => openTab('vista')}>Vista</button> {/* Nuevo botón "Vista" */}
           <button className="tab-button" onClick={() => openTab('catalogo')}>Catálogo de Ejercicios</button> {/* Nuevo botón "Vista" */}
+          <button className="tab-button" onClick={handleLogout}>Cerrar sesión</button> {/* Botón de cerrar sesión */}
         </nav>
       </header>
 
