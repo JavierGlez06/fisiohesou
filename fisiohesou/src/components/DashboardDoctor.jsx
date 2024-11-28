@@ -31,6 +31,12 @@ const DashboardDoctor = () => {
     setActiveTab(tabName);
   };
 
+  const handleLogout = () => {
+    // Aquí va la lógica para cerrar sesión.
+    window.location.href = '/login'; // Redirige al login
+   
+  };
+
   return (
     <div className="dashboard-container container">
       <header>
