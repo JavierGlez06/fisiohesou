@@ -182,7 +182,7 @@ h3 {
 
 /* Botón de menú hamburguesa */
 .menu-toggle {
-  background: none;
+  background-color: #6460AA;
   border: none;
   font-size: 24px;
   color: var(--color-primary);
