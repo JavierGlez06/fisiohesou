@@ -19,16 +19,7 @@
   }
   
   /* Inputs y botones */
-  input[type="text"] {
-    background-color: #fff; /* Color de fondo */
-    padding: 10px;
-    width: 80%;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #000; /* Color del texto */
-  }
+
   
   button {
     background-color: #6460AA;
