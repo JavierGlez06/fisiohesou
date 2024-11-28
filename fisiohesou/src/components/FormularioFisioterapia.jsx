@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useRef } from "react";
 import './FormularioFisioterapia.css';
 import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
+import figura from "../assets/figura.png"
+import ClickableImage from "./ClickableImage";
 
 const FormularioFisioterapia = () => {
+
+    const clickableImageRef = useRef();
+
+    const handleReset = () => {
+        // Llamamos a la función `resetClicks` del componente hijo.
+        clickableImageRef.current.resetClicks();
+    };
     
     return (
         <div className="form-container">
@@ -460,7 +469,10 @@ const FormularioFisioterapia = () => {
                 {/* Sección de Inspección Local */}
                 <div className="inspeccion-local">
                     <h3>Inspección Local</h3>
-                    {/* Aquí puedes agregar los campos más tarde */}
+                    <ClickableImage ref={clickableImageRef} imageSrc={figura} />
+                    <button onClick={handleReset} className="reset-button">
+                        Reiniciar Imagen
+                    </button>
                 </div>
                 {/* Sección de Exploración Física */}
                 <div className="exploracion-fisica">

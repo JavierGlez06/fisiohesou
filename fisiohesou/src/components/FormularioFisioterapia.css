@@ -313,11 +313,15 @@ textarea {
   color: #333; /* Texto negro */
 }
 
-/* Estilo para la sección Inspección Local */
 .inspeccion-local {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: normal;
+  max-width: 100%; /* Ancho máximo */
+  margin: 0 auto; /* Centrado horizontal */
+  overflow: visible; /* Evita que el contenido se recorte */
+}
+
+.inspeccion-local img {
+  width: 100%; /* Ajusta la imagen al ancho del contenedor */
+  height: auto; /* Mantiene la proporción */
 }
 
 .inspeccion-local h3 {
@@ -326,6 +330,20 @@ textarea {
   color: #333;
   font-weight: normal;
 }
+
+.reset-button {
+  background-color: #6460AA;
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #550a8a; /* Variación de morado en hover */
+}
+
 
 /* Estilo para la sección Exploración Física */
 .exploracion-fisica {
