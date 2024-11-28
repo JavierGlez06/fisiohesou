@@ -193,3 +193,18 @@ input, textarea {
 .pdf-button:active {
     background-color: #ac2925; /* Color más oscuro cuando se presiona */
 }
+
+.generate-pdf-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6460AA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.generate-pdf-button:hover {
+    background-color: #550a8a;
+}

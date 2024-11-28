@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 import './NotaReferencia.css';
 import logoIzquierdo from '../assets/logo_v1_lila.png';
 import logoDerecho from '../assets/Icono_lila.png';
@@ -16,6 +18,70 @@ const NotaReferencia = () => {
     const [cedulaProfesional, setCedulaProfesional] = useState('');
     const [cargo, setCargo] = useState('');
     const [clinicaNombre, setClinicaNombre] = useState('');
+
+    const generatePDF = async () => {
+        try {
+            const element = document.querySelector(".document-container");
+            if (!element) {
+                console.error("No se encontró el contenedor");
+                return;
+            }
+    
+            const canvas = await html2canvas(element, { scale: 3, useCORS: true });
+            const imgData = canvas.toDataURL("image/png");
+    
+            const pdf = new jsPDF("p", "mm", "a4");
+    
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = imgWidth / imgHeight;
+    
+            let yPosition = 0;
+    
+            while (yPosition < imgHeight) {
+                const croppedCanvas = document.createElement("canvas");
+                croppedCanvas.width = canvas.width;
+                croppedCanvas.height = canvas.width / ratio;
+    
+                const context = croppedCanvas.getContext("2d");
+                context.drawImage(
+                    canvas,
+                    0,
+                    yPosition,
+                    canvas.width,
+                    croppedCanvas.height,
+                    0,
+                    0,
+                    croppedCanvas.width,
+                    croppedCanvas.height
+                );
+    
+                const croppedImgData = croppedCanvas.toDataURL("image/png");
+                pdf.addImage(
+                    croppedImgData,
+                    "PNG",
+                    0,
+                    0,
+                    pdfWidth,
+                    pdfWidth / ratio
+                );
+    
+                yPosition += croppedCanvas.height;
+    
+                if (yPosition < imgHeight) {
+                    pdf.addPage();
+                }
+            }
+    
+            pdf.save("Nota_Referencia.pdf");
+        } catch (error) {
+            console.error("Error al generar el PDF:", error);
+        }
+    };
+    
+    
 
     return (
         <div className="form-container">
@@ -234,6 +300,10 @@ const NotaReferencia = () => {
                     </p>
                 </div>
             </div>
+                        {/* Botón para generar PDF */}
+                        <button onClick={generatePDF} className="generate-pdf-button">
+                Generar PDF
+            </button>
         </div>
     );
 };

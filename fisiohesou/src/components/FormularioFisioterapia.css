@@ -331,6 +331,20 @@ textarea {
   font-weight: normal;
 }
 
+.reset-button {
+  background-color: #6460AA;
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #550a8a; /* Variación de morado en hover */
+}
+
+
 /* Estilo para la sección Exploración Física */
 .exploracion-fisica {
   margin-top: 20px;
