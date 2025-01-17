@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css'; // Asegúrate de tener el archivo de estilos importado
+import './Login.css'; 
 
 const Login = ({ onLogin }) => {
   const [isPaciente, setIsPaciente] = useState(true);
