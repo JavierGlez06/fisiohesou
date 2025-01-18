@@ -161,7 +161,7 @@
 .card-button {
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
-  background-color: #91c7c9;
+  background-color: #ffebfb;
   color: white;
   font-size: 0.9rem;
   border: none;
@@ -176,9 +176,9 @@
 
 /* Gráficos */
 .chart {
-  width: 96%;
+  width: 94%;
   height: 200px;
-  background: linear-gradient(135deg, #c6eef0, #ffffff);
+  background-color: #ffebfb;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -191,7 +191,7 @@
 .footer {
   text-align: center;
   padding: 1rem;
-  background-color: #b2d9db;
+  background-color: #6a0dad;
   color: #2c3e50;
   flex-shrink: 0;
 }
